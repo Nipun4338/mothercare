@@ -1,0 +1,169 @@
+﻿<div class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+
+                    <div class="card-body p-0">
+
+                        <!-- Nested Row within Card Body -->
+
+                        <div class="row">
+
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+
+                            <div class="col-lg-6">
+
+                                <div class="p-5">
+
+                                    <div class="text-center">
+
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+
+                                    </div>
+
+                                    <form class="user">
+
+                                        <div class="form-group">
+
+                                            <input type="text" class="form-control form-control-user" id="firstname" placeholder="First Name">
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <input type="text" class="form-control form-control-user" id="lastname" placeholder="Last Name">
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <input type="email" class="form-control form-control-user" id="email" placeholder="E-mail">
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <input type="tel" class="form-control form-control-user" id="phone" placeholder="Phone">
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <input type="text" class="form-control form-control-user" id="address" placeholder="Address">
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Password">
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <div class="custom-control custom-checkbox small">
+
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
+
+                                            </div>
+
+                                        </div>
+
+                                        <a href="#" onclick="SaveUser()" class="btn btn-primary btn-user btn-block">
+
+                                            Signup
+
+                                        </a>
+
+                                        <hr>
+
+                                    </form>
+
+                                    <hr>
+
+                                    <div class="text-center">
+
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+
+                                    </div>
+
+                                    <div class="text-center">
+
+                                        <a class="small" href="Login">Login!</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+<script>
+    function SaveUser() {
+        var user = new Object();
+        user.EmailId = $("#email").val();
+        user.Password = $("#password").val();
+        user.FirstName = $("#firstname").val();
+        user.LastName = $("#lastname").val();
+        user.Phone = $("#phone").val();
+        user.Address = $("#address").val();
+        var data = JSON.stringify({
+            user: user
+        });
+        return $.ajax({
+
+            contentType: 'application/json; charset=utf-8',
+
+            dataType: 'json',
+
+            type: 'POST',
+
+            url: "/Home/SaveUser",
+
+            data: data,
+
+            success: function (result) {
+                if (result == true) {
+                    window.location.href = "/Home/Login";
+                    alert("Save Success!");
+                }
+
+                else {
+                    alert("Save failed!");
+                }
+
+            },
+
+            error: function () {
+
+                alert("Error!")
+
+            }
+
+        });
+
+    }
+</script>
