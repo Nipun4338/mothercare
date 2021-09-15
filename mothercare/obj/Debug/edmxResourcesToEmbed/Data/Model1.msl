@@ -138,5 +138,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Tbl_Slider">
+      <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Slider">
+        <MappingFragment StoreEntitySet="Tbl_Slider">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SliderPath" ColumnName="SliderPath" />
+          <ScalarProperty Name="SliderId" ColumnName="SliderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

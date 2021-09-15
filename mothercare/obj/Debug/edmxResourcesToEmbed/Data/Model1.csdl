@@ -173,6 +173,7 @@
     <FunctionImport Name="GetBySearch" ReturnType="Collection(dbmothercareModel.GetBySearch_Result)">
       <Parameter Name="search" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Tbl_Slider" EntityType="dbmothercareModel.Tbl_Slider" />
   </EntityContainer>
   <ComplexType Name="GetBySearch_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -192,4 +193,16 @@
     <Property Type="Boolean" Name="IsActive1" Nullable="true" />
     <Property Type="Boolean" Name="IsDelete1" Nullable="true" />
   </ComplexType>
+  <EntityType Name="Tbl_Slider">
+    <Key>
+      <PropertyRef Name="SliderId" />
+    </Key>
+    <Property Name="SliderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SliderPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

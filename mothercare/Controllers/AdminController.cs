@@ -37,6 +37,11 @@ namespace mothercare.Controllers
             return View(_unitOfWork.GetRepositoryInstance<Tbl_Category>().GetAllRecords());
         }
         [AuthorizationFilter]
+        public ActionResult Slider()
+        {
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Slider>().GetAllRecords());
+        }
+        [AuthorizationFilter]
         public ActionResult CategoryEdit(int catId)
         {
             return View(_unitOfWork.GetRepositoryInstance<Tbl_Category>().GetFirstorDefault(catId));
@@ -104,6 +109,50 @@ namespace mothercare.Controllers
         public ActionResult CategoryAdd()
         {
             return View();
+        }
+        [AuthorizationFilter]
+        public ActionResult SliderAdd()
+        {
+            return View();
+        }
+        [AuthorizationFilter]
+        [HttpPost]
+        public ActionResult SliderAdd(Tbl_Slider tbl, HttpPostedFileBase file)
+        {
+            string pic = null;
+            if (file != null)
+            {
+                pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/ProductImg/"), pic);
+                // file is uploaded
+                file.SaveAs(path);
+            }
+            tbl.SliderPath = pic;
+            tbl.CreatedOn = DateTime.Now;
+            _unitOfWork.GetRepositoryInstance<Tbl_Slider>().Add(tbl);
+            return RedirectToAction("Slider");
+        }
+        [AuthorizationFilter]
+        public ActionResult SliderEdit(int sliderId)
+        {
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Slider>().GetFirstorDefault(sliderId));
+        }
+        [AuthorizationFilter]
+        [HttpPost]
+        public ActionResult SliderEdit(Tbl_Slider tbl, HttpPostedFileBase file)
+        {
+            string pic = null;
+            if (file != null)
+            {
+                pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/ProductImg/"), pic);
+                // file is uploaded
+                file.SaveAs(path);
+            }
+            tbl.SliderPath = file != null ? pic : tbl.SliderPath;
+            tbl.ModifiedOn = DateTime.Now;
+            _unitOfWork.GetRepositoryInstance<Tbl_Slider>().Update(tbl);
+            return RedirectToAction("Slider");
         }
         [AuthorizationFilter]
         [HttpPost]

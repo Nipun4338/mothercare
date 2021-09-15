@@ -16,6 +16,7 @@ namespace mothercare.Models.Home
         dbmothercareEntities context = new dbmothercareEntities();
 
         public IPagedList<Tbl_Product> ListOfProducts { get; set; }
+
         public HomeIndexViewModel CreateModel(string search, int pageSize, int? page)
         {
             SqlParameter[] param = new SqlParameter[]{

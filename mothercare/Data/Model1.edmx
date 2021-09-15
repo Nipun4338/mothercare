@@ -110,6 +110,18 @@
           <Property Name="SlideTitle" Type="varchar" MaxLength="500" />
           <Property Name="SlideImage" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Tbl_Slider">
+          <Key>
+            <PropertyRef Name="SliderId" />
+          </Key>
+          <Property Name="SliderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderPath" Type="varchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+        </EntityType>
         <Association Name="FK__Tbl_Cart__Produc__24927208">
           <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="0..1" />
           <End Role="Tbl_Cart" Type="Self.Tbl_Cart" Multiplicity="*" />
@@ -160,6 +172,7 @@
           <EntitySet Name="Tbl_Roles" EntityType="Self.Tbl_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_ShippingDetails" EntityType="Self.Tbl_ShippingDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_SlideImage" EntityType="Self.Tbl_SlideImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Slider" EntityType="Self.Tbl_Slider" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Tbl_Cart__Produc__24927208" Association="Self.FK__Tbl_Cart__Produc__24927208">
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />
             <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
@@ -350,6 +363,7 @@
           <FunctionImport Name="GetBySearch" ReturnType="Collection(dbmothercareModel.GetBySearch_Result)">
           <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Tbl_Slider" EntityType="dbmothercareModel.Tbl_Slider" />
         </EntityContainer>
         <ComplexType Name="GetBySearch_Result">
           <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -369,6 +383,18 @@
           <Property Type="Boolean" Name="IsActive1" Nullable="true" />
           <Property Type="Boolean" Name="IsDelete1" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Tbl_Slider">
+          <Key>
+            <PropertyRef Name="SliderId" />
+          </Key>
+          <Property Name="SliderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -512,6 +538,19 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Tbl_Slider">
+            <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Slider">
+              <MappingFragment StoreEntitySet="Tbl_Slider">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SliderPath" ColumnName="SliderPath" />
+                <ScalarProperty Name="SliderId" ColumnName="SliderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
