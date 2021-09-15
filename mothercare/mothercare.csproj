@@ -251,6 +251,8 @@
     <Content Include="AdminStyle\assets\demo\datatables-demo.js" />
     <Content Include="AdminStyle\assets\img\error-404-monochrome.svg" />
     <Content Include="AdminStyle\css\styles.css" />
+    <Content Include="AdminStyle\images\image-1.png" />
+    <Content Include="AdminStyle\index.html" />
     <Content Include="AdminStyle\js\datatables-simple-demo.js" />
     <Content Include="AdminStyle\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -339,6 +341,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Home\UserCreate.cshtml" />
+    <Content Include="Views\Home\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

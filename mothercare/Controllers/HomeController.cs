@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -80,21 +81,32 @@ namespace mothercare.Controllers
                 role.RoleId = 2;
                 db.Tbl_MemberRole.Add(role);
                 db.SaveChanges();
-                SmtpClient smtpClient = new SmtpClient();
-
-                smtpClient.Credentials = new System.Net.NetworkCredential("mother.care.aust@gmail.com", "wluewaekokkgffui");
-                // smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.EnableSsl = true;
-                MailMessage mail = new MailMessage();
-
-                //Setting From , To and CC
-                mail.From = new MailAddress("mother.care.aust@gmail.com", "Mother Care");
-                mail.Bcc.Add(new MailAddress(user.EmailId));
-                mail.Body = "Greetings!" +
-                    "To confirm your mothercare account, please click- ";
-
-                smtpClient.Send(mail);
+                MailMessage msg = new MailMessage();
+                System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
+                string link = "https://localhost:44301/Home/Verify?email="+user.EmailId+"&hash=" + user.EmailHash;
+                try
+                {
+                    msg.Subject = "Regarding Registration";
+                    msg.Body = "<h1 style=" + "\"background-image: linear-gradient(to top, rgba(255,192,203,0.5), rgba(255,192,203,1));text-align: center;font - family: 'Montserrat'; font - size: 22px;\"> Mother Care </h1>"+
+                                "<p> Greetings! </p>"+
+                                "<p> Please Confirm Your Account! </p>"+
+                                   "<a href=\"" + link+ "\">Click Here!</a>";
+                    msg.From = new MailAddress("mother.care.aust@gmail.com", "Mother Care");
+                    msg.To.Add(user.EmailId);
+                    msg.IsBodyHtml = true;
+                    client.Host = "smtp.gmail.com";
+                    System.Net.NetworkCredential basicauthenticationinfo = new System.Net.NetworkCredential("mother.care.aust@gmail.com", "wluewaekokkgffui");
+                    client.Port = int.Parse("587");
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = basicauthenticationinfo;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.Send(msg);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
             catch (Exception ex)
             {
@@ -104,11 +116,31 @@ namespace mothercare.Controllers
 
             return Json(isSuccess, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public ActionResult Verify(string url)
+        {
+            dbmothercareEntities db = new dbmothercareEntities();
+            string email = Request.QueryString["email"];
+            string hash= Request.QueryString["hash"];
+            var dataItem = db.Tbl_Members.Where(x => x.EmailId == email && x.EmailHash == hash).SingleOrDefault();
+            if(dataItem!=null)
+            {
+                dataItem.IsActive = true;
+                db.SaveChanges();
+                ViewBag.Message = "Your account has been confirmed! Please Login.";
+                ViewBag.Status = 1;
+            }
+            else
+            {
+                ViewBag.Message = "Anything wrong?";
+                ViewBag.Status = 0;
+            }
+            return View();
+        }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
