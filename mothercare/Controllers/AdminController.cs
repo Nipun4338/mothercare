@@ -76,7 +76,9 @@ namespace mothercare.Controllers
                 // file is uploaded
                 file.SaveAs(path);
             }
-            tbl.ProductImage = file != null ? pic : tbl.ProductImage;
+            dbmothercareEntities context = new dbmothercareEntities();
+            var data3 = context.Tbl_Product.Where(x => x.ProductId == tbl.ProductId).FirstOrDefault();
+            tbl.ProductImage = file != null ? pic : data3.ProductImage;
             tbl.ModifiedDate = DateTime.Now;
             _unitOfWork.GetRepositoryInstance<Tbl_Product>().Update(tbl);
             return RedirectToAction("Product");
@@ -141,6 +143,7 @@ namespace mothercare.Controllers
         [HttpPost]
         public ActionResult SliderEdit(Tbl_Slider tbl, HttpPostedFileBase file)
         {
+            Console.WriteLine(tbl.SliderPath);
             string pic = null;
             if (file != null)
             {
@@ -149,7 +152,9 @@ namespace mothercare.Controllers
                 // file is uploaded
                 file.SaveAs(path);
             }
-            tbl.SliderPath = file != null ? pic : tbl.SliderPath;
+            dbmothercareEntities context = new dbmothercareEntities();
+            var data3 = context.Tbl_Slider.Where(x => x.SliderId==tbl.SliderId).FirstOrDefault();
+            tbl.SliderPath = file != null ? pic : data3.SliderPath;
             tbl.ModifiedOn = DateTime.Now;
             _unitOfWork.GetRepositoryInstance<Tbl_Slider>().Update(tbl);
             return RedirectToAction("Slider");
