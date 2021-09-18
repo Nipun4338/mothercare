@@ -223,6 +223,10 @@ namespace mothercare.Controllers
             return Redirect("Index");
 
         }
+        public ActionResult ViewProduct(int productId)
+        {
+            return View();
+        }
 
         public ActionResult Checkout()
         {

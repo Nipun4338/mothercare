@@ -89,41 +89,41 @@
 </div>
 <div class="row product-container">
     @foreach (var item in Model.ListOfProducts)
-            {
+    {
     <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
         <div class="thumbnail product-item" style="height:300px">
-
-            <img class="img-responsive .bg-secondary.bg-gradient" title="Click to View Product detail"
-                 style="cursor:pointer;height:160px;width:100%"
-                 src="~/ProductImg/@item.ProductImage" />
+                <a href="@Url.Action("ViewProduct", "Home", new {productId=item.ProductId})">
+                    <img class="img-responsive .bg-secondary.bg-gradient" title="Click to View Product detail"
+                         style="cursor:pointer;height:160px;width:100%"
+                         src="~/ProductImg/@item.ProductImage" />
 
             <div class="caption">
                 <h5>@item.ProductName</h5>
                 <p>@item.Price ৳.</p>
                 <p>
-                    @if (item.Quantity > 0 && item.IsDelete != null && !(bool) item.IsDelete)
+                    @if (item.Quantity > 0 && item.IsDelete != null && !(bool)item.IsDelete)
                     {
-                        using(Html.BeginForm("AddToCart", "Home", new {productId=item.ProductId}, FormMethod.Post))
+                        using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId }, FormMethod.Post))
                         {
                             <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
                         }
-                        <p> Available </p>
-                    }
-                    else
-                    {
-                        <p>Not Available</p>
-                    }
+                    <p> Available </p>
+                }
+                else
+                {
+                    <p>Not Available</p>
+                }
                     </p>
                     <div class="product-item-badge">
                         @if (item.IsFeatured == true)
-                                                        {
-                        <p>New</p>
+                        {
+                            <p>New</p>
 
-                                                        }
-                                                        else
-                                                        {
-                        <p>Old</p>
-                                                        }
+                        }
+                        else
+                        {
+                            <p>Old</p>
+                        }
                     </div>
                 </div>
             </div>
