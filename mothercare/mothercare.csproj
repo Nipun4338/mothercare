@@ -203,6 +203,9 @@
     <Compile Include="Data\Tbl_Cart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Tbl_CartItems.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Tbl_CartStatus.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

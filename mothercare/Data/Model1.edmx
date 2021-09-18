@@ -21,6 +21,18 @@
           <Property Name="ProductId" Type="int" />
           <Property Name="MemberId" Type="int" />
           <Property Name="CartStatusId" Type="int" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Total" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_CartItems">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="Tbl_CartStatus">
           <Key>
@@ -134,6 +146,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Tbl_CartI__CartI__6FE99F9F">
+          <End Role="Tbl_Cart" Type="Self.Tbl_Cart" Multiplicity="0..1" />
+          <End Role="Tbl_CartItems" Type="Self.Tbl_CartItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Cart">
+              <PropertyRef Name="CartId" />
+            </Principal>
+            <Dependent Role="Tbl_CartItems">
+              <PropertyRef Name="CartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_CartI__Produ__70DDC3D8">
+          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="0..1" />
+          <End Role="Tbl_CartItems" Type="Self.Tbl_CartItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Tbl_CartItems">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Tbl_Produ__Categ__25869641">
           <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="0..1" />
           <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="*" />
@@ -164,6 +200,7 @@
         <EntityContainer Name="dbmothercareModelStoreContainer">
           <EntitySet Name="RolePermission" EntityType="Self.RolePermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Cart" EntityType="Self.Tbl_Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_CartItems" EntityType="Self.Tbl_CartItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_CartStatus" EntityType="Self.Tbl_CartStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_MemberRole" EntityType="Self.Tbl_MemberRole" Schema="dbo" store:Type="Tables" />
@@ -176,6 +213,14 @@
           <AssociationSet Name="FK__Tbl_Cart__Produc__24927208" Association="Self.FK__Tbl_Cart__Produc__24927208">
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />
             <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_CartI__CartI__6FE99F9F" Association="Self.FK__Tbl_CartI__CartI__6FE99F9F">
+            <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
+            <End Role="Tbl_CartItems" EntitySet="Tbl_CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_CartI__Produ__70DDC3D8" Association="Self.FK__Tbl_CartI__Produ__70DDC3D8">
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+            <End Role="Tbl_CartItems" EntitySet="Tbl_CartItems" />
           </AssociationSet>
           <AssociationSet Name="FK__Tbl_Produ__Categ__25869641" Association="Self.FK__Tbl_Produ__Categ__25869641">
             <End Role="Tbl_Category" EntitySet="Tbl_Category" />
@@ -207,6 +252,10 @@
           <Property Name="MemberId" Type="Int32" />
           <Property Name="CartStatusId" Type="Int32" />
           <NavigationProperty Name="Tbl_Product" Relationship="Self.FK__Tbl_Cart__Produc__24927208" FromRole="Tbl_Cart" ToRole="Tbl_Product" />
+          <Property Name="PaymentType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Total" Type="Int32" />
+          <NavigationProperty Name="Tbl_CartItems" Relationship="dbmothercareModel.FK__Tbl_CartI__CartI__6FE99F9F" FromRole="Tbl_Cart" ToRole="Tbl_CartItems" />
         </EntityType>
         <EntityType Name="Tbl_CartStatus">
           <Key>
@@ -269,6 +318,7 @@
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Tbl_Cart" Relationship="Self.FK__Tbl_Cart__Produc__24927208" FromRole="Tbl_Product" ToRole="Tbl_Cart" />
           <NavigationProperty Name="Tbl_Category" Relationship="Self.FK__Tbl_Produ__Categ__25869641" FromRole="Tbl_Product" ToRole="Tbl_Category" />
+          <NavigationProperty Name="Tbl_CartItems" Relationship="dbmothercareModel.FK__Tbl_CartI__Produ__70DDC3D8" FromRole="Tbl_Product" ToRole="Tbl_CartItems" />
         </EntityType>
         <EntityType Name="Tbl_Roles">
           <Key>
@@ -364,6 +414,15 @@
           <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Tbl_Slider" EntityType="dbmothercareModel.Tbl_Slider" />
+          <EntitySet Name="Tbl_CartItems" EntityType="dbmothercareModel.Tbl_CartItems" />
+          <AssociationSet Name="FK__Tbl_CartI__CartI__6FE99F9F" Association="dbmothercareModel.FK__Tbl_CartI__CartI__6FE99F9F">
+            <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
+            <End Role="Tbl_CartItems" EntitySet="Tbl_CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_CartI__Produ__70DDC3D8" Association="dbmothercareModel.FK__Tbl_CartI__Produ__70DDC3D8">
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
+            <End Role="Tbl_CartItems" EntitySet="Tbl_CartItems" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetBySearch_Result">
           <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -395,6 +454,41 @@
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Tbl_CartItems">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Tbl_Cart" Relationship="dbmothercareModel.FK__Tbl_CartI__CartI__6FE99F9F" FromRole="Tbl_CartItems" ToRole="Tbl_Cart" />
+          <NavigationProperty Name="Tbl_Product" Relationship="dbmothercareModel.FK__Tbl_CartI__Produ__70DDC3D8" FromRole="Tbl_CartItems" ToRole="Tbl_Product" />
+        </EntityType>
+        <Association Name="FK__Tbl_CartI__CartI__6FE99F9F">
+          <End Type="dbmothercareModel.Tbl_Cart" Role="Tbl_Cart" Multiplicity="0..1" />
+          <End Type="dbmothercareModel.Tbl_CartItems" Role="Tbl_CartItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Cart">
+              <PropertyRef Name="CartId" />
+            </Principal>
+            <Dependent Role="Tbl_CartItems">
+              <PropertyRef Name="CartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_CartI__Produ__70DDC3D8">
+          <End Type="dbmothercareModel.Tbl_Product" Role="Tbl_Product" Multiplicity="0..1" />
+          <End Type="dbmothercareModel.Tbl_CartItems" Role="Tbl_CartItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Tbl_CartItems">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -413,6 +507,9 @@
           <EntitySetMapping Name="Tbl_Cart">
             <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Cart">
               <MappingFragment StoreEntitySet="Tbl_Cart">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
                 <ScalarProperty Name="CartId" ColumnName="CartId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
@@ -548,6 +645,16 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="SliderPath" ColumnName="SliderPath" />
                 <ScalarProperty Name="SliderId" ColumnName="SliderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_CartItems">
+            <EntityTypeMapping TypeName="dbmothercareModel.Tbl_CartItems">
+              <MappingFragment StoreEntitySet="Tbl_CartItems">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="CartItemId" ColumnName="CartItemId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

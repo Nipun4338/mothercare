@@ -227,15 +227,17 @@ namespace mothercare.Controllers
         {
             return View();
         }
-
+        [AuthorizationFilter]
         public ActionResult Checkout()
         {
             return View();
         }
+        [AuthorizationFilter]
         public ActionResult CheckoutDetails()
         {
             return View();
         }
+
         public ActionResult DecreaseQty(int productId)
         {
             if (Session["cart"] != null)
@@ -263,6 +265,7 @@ namespace mothercare.Controllers
             }
             return Redirect("Checkout");
         }
+
         public ActionResult IncreaseQty(int productId)
         {
             List<Item> cart = (List<Item>)Session["cart"];
