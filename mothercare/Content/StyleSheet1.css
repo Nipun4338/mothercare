@@ -1,0 +1,133 @@
+﻿* {
+    font-family: Montserrat;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.background {
+    width: 1368px;
+    height: 768px;
+    background-image: url('Desktop1.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .background #Button3 {
+        position: absolute;
+        width: 179px;
+        height: 44px;
+        left: 36px;
+        top: 695px;
+        background: #FFFFFF;
+        border: 1.5px solid #76299B;
+        box-sizing: border-box;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        color: rgba(118, 41, 155, 0.56);
+    }
+
+.form-box {
+    position: absolute;
+    width: 397px;
+    height: 530px;
+    left: 900px;
+    top: 60px;
+    background: #FFFFFF;
+    border-radius: 24px;
+}
+
+.text-box1 #exampleInputUser {
+    position: absolute;
+    width: 362px;
+    height: 65px;
+    left: 16px;
+    top: 38px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    color: rgba(118, 41, 155, 0.56);
+}
+
+.text-box1 #exampleInputPassword {
+    position: absolute;
+    width: 362px;
+    height: 65px;
+    left: 16px;
+    top: 134px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    color: rgba(118, 41, 155, 0.56);
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(118, 41, 155, 0.56);
+}
+
+.text-box1 #Button1 {
+    position: absolute;
+    width: 362px;
+    height: 65px;
+    left: 17px;
+    top: 230px;
+    background: #76299B;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+a {
+    position: absolute;
+    width: 362px;
+    height: 25px;
+    left: 80px;
+    top: 326px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #76299B;
+}
+
+.text-box1 #Button2 {
+    position: absolute;
+    width: 302px;
+    height: 65px;
+    left: 47px;
+    top: 398px;
+    background: #24C916;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #FFFFFF;
+}

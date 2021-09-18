@@ -75,7 +75,7 @@
         <input type="text" name="search" placeholder="Enter Keyword" class="inputComn form-control" />
         <div class="searchIcon">
             <button type="submit" class="searchBtn">
-                <i class="fas fa-search"></i>
+                <i class="fa fa-search"></i>
             </button>
         </div>
     </div>
@@ -83,7 +83,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
-            <h2>Our Producrs <small>trends products</small></h2>
+            <h2>Our Producrs <small>Trends Products</small></h2>
         </div>
     </div>
 </div>
@@ -102,14 +102,17 @@
                 <p>@item.Price ৳.</p>
                 <p>
                     @if (item.Quantity > 0 && item.IsDelete != null && !(bool) item.IsDelete)
-                            {
-                            <p>Available</p>
-
+                    {
+                        using(Html.BeginForm("AddToCart", "Home", new {productId=item.ProductId}, FormMethod.Post))
+                        {
+                            <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
                         }
-                                        else
-                                        {
-                <p>Not Available</p>
-                                        }
+                        <p> Available </p>
+                    }
+                    else
+                    {
+                        <p>Not Available</p>
+                    }
                     </p>
                     <div class="product-item-badge">
                         @if (item.IsFeatured == true)

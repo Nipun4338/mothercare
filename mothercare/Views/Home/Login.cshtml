@@ -1,152 +1,97 @@
-﻿
+﻿@{
+    Layout = null;
+}
 
-<div class="bg-gradient-primary">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
 
-    <div class="container">
-
-        <!-- Outer Row -->
-
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-
-                    <div class="card-body p-0">
-
-                        <!-- Nested Row within Card Body -->
-
-                        <div class="row">
-
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-
-                            <div class="col-lg-6">
-
-                                <div class="p-5">
-
-                                    <div class="text-center">
-
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-
-                                    </div>
-
-                                    <form class="user">
-
-                                        <div class="form-group">
-
-                                            <input type="email" class="form-control form-control-user" id="exampleInputUser" aria-describedby="emailHelp" placeholder="E-mail" required>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <div class="custom-control custom-checkbox small">
-
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
-
-                                            </div>
-
-                                        </div>
-
-                                        <a href="#" onclick="checkLogin()" class="btn btn-primary btn-user btn-block">
-
-                                            Login
-
-                                        </a>
-
-                                        <hr>
-
-                                    </form>
-
-                                    <hr>
-
-                                    <div class="text-center">
-
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-
-                                    </div>
-
-                                    <div class="text-center">
-
-                                        <a class="small" href="UserCreate">Create an Account!</a>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="background">
+        <asp:Button ID="Button3" Text="About Us" />
     </div>
 
+    <div class="form-box">
+        <div class="text-box1">
+            <form class="user">
+
+                &nbsp;<input id="exampleInputUser" type="email" placeholder="Enter E-mail" class="form-control form-control-user" aria-describedby="emailHelp" required />
+                <input id="exampleInputPassword" type="password" placeholder="Enter Password" class="form-control form-control-user" required />
+                <button id="Button1" onclick="checkLogin()" class="btn btn-primary btn-user btn-block">
+                    Login
+                </button>
+            </form>
+            <a href="#">Forgotten Password</a>
+            <button id="Button2" onclick="location.href='@Url.Action("UserCreate", "Home")';return false;" class="btn btn-primary btn-user btn-block">
+                Create an Account!
+            </button>
+        </div>
+    </div>
+        
+    
+    <script type="text/javascript">
+
+        function checkLogin() {
+            var delay = 10000;
+            var data = JSON.stringify({
+
+                username: $("#exampleInputUser").val(),
+
+                password: $("#exampleInputPassword").val()
+
+            });
+
+            $.ajax({
+
+                contentType: 'application/json; charset=utf-8',
+
+                dataType: 'json',
+
+                type: 'POST',
+
+                url: "/Home/CheckLogin",
+
+                data: data,
+
+                success: function (result) {
+                    
+
+                    if (result == true) {
+
+                        window.location.href = "/Home/Index";
+
+                    }
+
+                    else {
+                        alert("Wrong User!")
+                        window.location.href = "/Home/Login";
+
+                    }
+
+                },
+
+                error: function () {
+
+                    alert("Error!")
+
+                },
+
+            });
+            alert("Wait for the response!")
+        }
+
+    </script>
 
 
-</div>
-<script>
 
-    function checkLogin() {
+</body>
 
-        var data = JSON.stringify({
+</html>
 
-            username: $("#exampleInputUser").val(),
 
-            password: $("#exampleInputPassword").val()
-
-        });
-
-        return $.ajax({
-
-            contentType: 'application/json; charset=utf-8',
-
-            dataType: 'json',
-
-            type: 'POST',
-
-            url: "/Home/CheckLogin",
-
-            data: data,
-
-            success: function (result) {
-
-                if (result == true) {
-
-                    window.location.href = "/Home/Index";
-
-                }
-
-                else {
-
-                    window.location.href = "/Home/Login";
-
-                }
-
-            },
-
-            error: function () {
-
-                alert("Error!")
-
-            }
-
-        });
-
-    }
-
-</script>

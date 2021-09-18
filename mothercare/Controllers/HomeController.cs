@@ -14,6 +14,7 @@ namespace mothercare.Controllers
 {
     public class HomeController : Controller
     {
+        dbmothercareEntities db = new dbmothercareEntities();
         public ActionResult Index(string search, int? page)
         {
             HomeIndexViewModel model = new HomeIndexViewModel();
@@ -36,7 +37,6 @@ namespace mothercare.Controllers
 
         public JsonResult CheckLogin(string username, string password)
         {
-            dbmothercareEntities db = new dbmothercareEntities();
             string md5StringPassword = AppHelper.GetMd5Hash(password);
             var dataItem = db.Tbl_Members.Where(x => x.EmailId == username && x.Password == md5StringPassword).SingleOrDefault();
            
@@ -65,7 +65,6 @@ namespace mothercare.Controllers
         [HttpPost]
         public JsonResult SaveUser(Tbl_Members user)
         {
-            dbmothercareEntities db = new dbmothercareEntities();
             bool isSuccess = true;
             try
             {
@@ -119,7 +118,6 @@ namespace mothercare.Controllers
         [HttpGet]
         public ActionResult Verify(string url)
         {
-            dbmothercareEntities db = new dbmothercareEntities();
             string email = Request.QueryString["email"];
             string hash= Request.QueryString["hash"];
             var dataItem = db.Tbl_Members.Where(x => x.EmailId == email && x.EmailHash == hash).SingleOrDefault();
@@ -157,5 +155,156 @@ namespace mothercare.Controllers
             Session["Role"] = null;
             return RedirectToAction("Login");
         }
+        public ActionResult AddToCart(int productId)
+        {
+            if(Session["cart"]==null)
+            {
+                List<Item> cart = new List<Item>();
+                var product = db.Tbl_Product.Find(productId);
+                cart.Add(new Item()
+                {
+                    Product = product,
+                    Quantity = 1
+                });
+                Session["cart"] = cart;
+
+            }
+            else
+            {
+                List<Item> cart =(List<Item>)Session["cart"];
+                var product = db.Tbl_Product.Find(productId);
+                int count = cart.Count();
+                int flag = 0;
+                foreach (var item in cart.ToList())
+                {
+                    if(item.Product.ProductId==productId)
+                    {
+                        int prevQty = item.Quantity;
+                        cart.Remove(item);
+                        cart.Add(new Item()
+                        {
+                            Product = product,
+                            Quantity = prevQty+1
+                        });
+                        flag = 1;
+                        break;
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                if(flag==0)
+                {
+                    cart.Add(new Item()
+                    {
+                        Product = product,
+                        Quantity = 1
+                    });
+                }
+                Session["cart"] = cart;
+                
+            }
+            return Redirect("Index");
+
+        }
+        public ActionResult RemoveFromCart(int productId)
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            foreach(var item in cart)
+            {
+                if(item.Product.ProductId==productId)
+                {
+                    cart.Remove(item);
+                    break;
+                }
+            }
+            Session["cart"] = cart;
+            return Redirect("Index");
+
+        }
+
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+        public ActionResult CheckoutDetails()
+        {
+            return View();
+        }
+        public ActionResult DecreaseQty(int productId)
+        {
+            if (Session["cart"] != null)
+            {
+                List<Item> cart = (List<Item>)Session["cart"];
+                var product = db.Tbl_Product.Find(productId);
+                foreach (var item in cart)
+                {
+                    if (item.Product.ProductId == productId)
+                    {
+                        int prevQty = item.Quantity;
+                        if (prevQty > 0)
+                        {
+                            cart.Remove(item);
+                            cart.Add(new Item()
+                            {
+                                Product = product,
+                                Quantity = prevQty - 1
+                            });
+                        }
+                        break;
+                    }
+                }
+                Session["cart"] = cart;
+            }
+            return Redirect("Checkout");
+        }
+        public ActionResult IncreaseQty(int productId)
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            var product = db.Tbl_Product.Find(productId);
+            int flag = 0;
+            if (Session["cart"] != null)
+            {
+                foreach (var item in cart)
+                {
+                    if (item.Product.ProductId == productId)
+                    {
+                        int prevQty = item.Quantity;
+                        if (prevQty >= 0)
+                        {
+                            cart.Remove(item);
+                            cart.Add(new Item()
+                            {
+                                Product = product,
+                                Quantity = prevQty + 1
+                            });
+                        }
+                        flag = 1;
+                        break;
+                    }
+                }
+                if(flag==0)
+                {
+                    cart.Add(new Item()
+                    {
+                        Product = product,
+                        Quantity = 1
+                    });
+                }
+                Session["cart"] = cart;
+            }
+            else
+            {
+                cart.Add(new Item()
+                {
+                    Product = product,
+                    Quantity = 1
+                });
+                Session["cart"] = cart;
+            }
+            return Redirect("Checkout");
+        }
+
     }
 }
