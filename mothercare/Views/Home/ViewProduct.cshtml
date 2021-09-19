@@ -4,99 +4,94 @@
     ViewBag.Title = "ViewProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/productView.css" rel="stylesheet" />
 
 <div>
     <h4>Product Details</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <!-- card left -->
+                        <div class="product-imgs">
+                            <div class="img-display">
+                                <div class="img-showcase">
+                                    <img src="~/ProductImg/@Model.ProductImage" alt="Product image">
+                                </div>
+                            </div>
+                            <div class="img-select">
+                                <div class="img-item">
+                                    <a href="#" data-id="1">
+                                        <img src="~/ProductImg/@Model.ProductImage" alt="Product image">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <!-- card right -->
+                        <div class="product-content">
+                            <h2 class="product-title">@Model.ProductName</h2>
+                            <a href="#" class="product-link">visit store</a>
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                                <span>4.7(21)</span>
+                            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                            <div class="product-price">
+                                <!--<p class="last-price">Old Price: <span>$257.00</span></p>-->
+                                    <p class="new-price">New Price: <span><b>@Model.Price</b> /=</span></p>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
+                                <div class="product-detail">
+                                    <h2>About this item: </h2>
+                                    <p>@Model.Description</p>
+                                    <ul>
+                                        <li>Color: <span>Black</span></li>
+                                        <li>Available: <span>in stock</span></li>
+                                        <li>Category: <span>Shoes</span></li>
+                                        <li>Shipping Area: <span>All over the world</span></li>
+                                        <li>Shipping Fee: <span>Free</span></li>
+                                    </ul>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
+                                <div class="purchase-info">
+                                    <!--<input type="number" min="0" value="1">-->
+                                    <button type="button" class="btn">
+                                        Add to Cart <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                    <button type="button" class="btn">Compare</button>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDelete)
-        </dt>
+                                <div class="social-links">
+                                    <p>Share At: </p>
+                                    <a href="#">
+                                        <i class="fa fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-whatsapp"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsDelete)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsFeatured)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsFeatured)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tbl_Category.CategoryName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tbl_Category.CategoryName)
-        </dd>
-
-    </dl>
-</div>
+    </div>

@@ -16,6 +16,7 @@ namespace mothercare.Controllers
     public class HomeController : Controller
     {
         dbmothercareEntities db = new dbmothercareEntities();
+        public GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
         public ActionResult Index(string search, int? page)
         {
             HomeIndexViewModel model = new HomeIndexViewModel();
@@ -233,7 +234,8 @@ namespace mothercare.Controllers
         }
         public ActionResult ViewProduct(int productId)
         {
-            return View();
+            var dataItem = db.Tbl_Product.Where(x => x.ProductId==productId).SingleOrDefault();
+            return View(dataItem);
         }
         [AuthorizationFilter]
         public ActionResult Checkout()
@@ -346,7 +348,7 @@ namespace mothercare.Controllers
             }
             return Redirect("Checkout");
         }
-        public GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
+        
         [AuthorizationFilter]
         public ActionResult OrderHistory()
         {

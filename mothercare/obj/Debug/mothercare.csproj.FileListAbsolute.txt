@@ -109,4 +109,3 @@ C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.csproj.CoreC
 C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.csproj.CopyComplete
 C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.dll
 C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.pdb
-C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.csproj.AssemblyReference.cache
