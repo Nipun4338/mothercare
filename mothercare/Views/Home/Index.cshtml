@@ -2,7 +2,7 @@
 
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
 @using PagedList;
@@ -92,40 +92,44 @@
     {
     <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
         <div class="thumbnail product-item" style="height:300px">
-                <a href="@Url.Action("ViewProduct", "Home", new {productId=item.ProductId})">
+                <a href="@Url.Action("ViewProduct", "Home", new {productId=item.ProductId})" style="text-decoration: none;">
                     <img class="img-responsive .bg-secondary.bg-gradient" title="Click to View Product detail"
                          style="cursor:pointer;height:160px;width:100%"
                          src="~/ProductImg/@item.ProductImage" />
 
-            <div class="caption">
-                <h5>@item.ProductName</h5>
-                <p>@item.Price ৳.</p>
-                <p>
-                    @if (item.Quantity > 0 && item.IsDelete != null && !(bool)item.IsDelete)
-                    {
-                        using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId }, FormMethod.Post))
-                        {
-                            <button type="submit" class="pull-right"><i class="fa fa-shopping-cart"></i></button>
-                        }
-                    <p> Available </p>
-                }
-                else
-                {
-                    <p>Not Available</p>
-                }
-                    </p>
-                    <div class="product-item-badge">
-                        @if (item.IsFeatured == true)
-                        {
-                            <p>New</p>
-
+                    <div class="caption">
+                        <h5>@item.ProductName</h5>
+                        <h4><span style="color:orange"><b>৳ @item.Price</b></span></h4>
+                        <p>
+                            @if (item.Quantity > 0 && item.IsDelete != null && !(bool)item.IsDelete)
+                            {
+                                using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId, url = "Index" }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="pull-right"><i class="fa fa-shopping-cart" style="color:green"></i></button>
+                                }
+                            <p> Available </p>
                         }
                         else
                         {
-                            <p>Old</p>
+                            <p>Not Available</p>
                         }
+                            </p>
+
+                            @if (item.IsFeatured == true)
+                            {
+                                <div class="product-item-badge" style="background-color:orangered">
+                                    <p style="text-align:center"><b>New</b></p>
+                                </div>
+
+                            }
+                            else
+                            {
+                    <div class="product-item-badge" style="background-color:black">
+                        <p style="text-align:center"><b>Old</b></p>
                     </div>
-                </div>
+                            }
+                                
+                        </div>
             </div>
         </div>
                     }

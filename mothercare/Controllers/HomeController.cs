@@ -164,7 +164,7 @@ namespace mothercare.Controllers
             Session["Role"] = null;
             return RedirectToAction("Login");
         }
-        public ActionResult AddToCart(int productId)
+        public ActionResult AddToCart(int productId, string url)
         {
             if(Session["cart"]==null)
             {
@@ -214,7 +214,7 @@ namespace mothercare.Controllers
                 Session["cart"] = cart;
                 
             }
-            return Redirect("Index");
+            return Redirect(url);
 
         }
         public ActionResult RemoveFromCart(int productId)
