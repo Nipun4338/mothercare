@@ -1,0 +1,64 @@
+﻿@model  IEnumerable<mothercare.Data.Tbl_Cart>
+@{
+    ViewBag.Title = "OrderHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order History</h2>
+
+@{ int count2 = 0;}
+@foreach (var item in Model.ToList())
+{
+    count2++;
+}
+@{
+    if (count2 > 0)
+    {
+        <div class="container">
+            <!----<p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>-->
+            <div class="panel-group" id="accordion">
+                @{ int count = 0;}
+                @foreach (var item in Model.ToList())
+                {
+                    count++;
+                    string collapse = "#collapse" + count;
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="@collapse">OrderId: @item.CartId</a>
+                            </h4>
+                        </div>
+                        <div id="@collapse" class="panel-collapse collapse} ">
+                            <div class="panel-body">
+                                <table class="table table-bordered" style="text-align:center">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center">Payment Type</th>
+                                            <th style="text-align:center">Total</th>
+                                            <th style="text-align:center">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@item.PaymentType</td>
+
+                                            <td>@item.Total</td>
+                                            <td>@item.Date</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <strong>No Order History!</strong>
+        </div>
+    }
+}
+

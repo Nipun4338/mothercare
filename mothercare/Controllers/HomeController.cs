@@ -1,6 +1,7 @@
 ﻿using mothercare.Data;
 using mothercare.Helper;
 using mothercare.Models.Home;
+using mothercare.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,14 @@ namespace mothercare.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            if(Session["Username"]==null)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("Index");
+            }
         }
         public ActionResult UserCreate()
         {
@@ -235,7 +243,33 @@ namespace mothercare.Controllers
         [AuthorizationFilter]
         public ActionResult CheckoutDetails()
         {
-            return View();
+            int Total2 = 0;
+            Tbl_Cart cart = new Tbl_Cart();
+            foreach (Item item in (List<Item>)Session["cart"])
+            {
+                int lineTotal = Convert.ToInt32(item.Quantity * item.Product.Price);
+                Total2 = Convert.ToInt32(@Total2 + lineTotal);
+            }
+            cart.Total = Total2;
+            string name = Session["Username"].ToString();
+            var dataItem = db.Tbl_Members.Where(x => x.EmailId == name).SingleOrDefault();
+            cart.MemberId = dataItem.MemberId;
+            cart.Date = DateTime.Now;
+            db.Tbl_Cart.Add(cart);
+            db.SaveChanges();
+            int Id = cart.CartId;
+            foreach (Item item in (List<Item>)Session["cart"])
+            {
+                Tbl_CartItems cartItems = new Tbl_CartItems();
+                cartItems.CartId = Id;
+                cartItems.ProductId = item.Product.ProductId;
+                cartItems.Quantity = item.Quantity;
+                db.Tbl_CartItems.Add(cartItems);
+                db.SaveChanges();
+            }
+            ViewBag.Message = "Your OrderId is -> "+Id;
+            ViewBag.Status = 1;
+            return RedirectToAction("OrderHistory");
         }
 
         public ActionResult DecreaseQty(int productId)
@@ -311,6 +345,14 @@ namespace mothercare.Controllers
                 Session["cart"] = cart;
             }
             return Redirect("Checkout");
+        }
+        public GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
+        [AuthorizationFilter]
+        public ActionResult OrderHistory()
+        {
+            string name = Session["Username"].ToString();
+            var dataItem = db.Tbl_Members.Where(x => x.EmailId == name).SingleOrDefault();
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Cart>().GetAllRecords().OrderByDescending(y=>y.Date).Where(x=>x.MemberId==dataItem.MemberId));
         }
 
     }

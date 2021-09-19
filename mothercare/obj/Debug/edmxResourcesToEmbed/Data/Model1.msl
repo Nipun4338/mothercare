@@ -13,6 +13,9 @@
     <EntitySetMapping Name="Tbl_Cart">
       <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Cart">
         <MappingFragment StoreEntitySet="Tbl_Cart">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
           <ScalarProperty Name="CartId" ColumnName="CartId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="MemberId" ColumnName="MemberId" />
@@ -148,6 +151,16 @@
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="SliderPath" ColumnName="SliderPath" />
           <ScalarProperty Name="SliderId" ColumnName="SliderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_CartItems">
+      <EntityTypeMapping TypeName="dbmothercareModel.Tbl_CartItems">
+        <MappingFragment StoreEntitySet="Tbl_CartItems">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="CartItemId" ColumnName="CartItemId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
