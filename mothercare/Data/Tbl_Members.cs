@@ -11,14 +11,14 @@ namespace mothercare.Data
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Tbl_Members
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tbl_Members()
         {
             this.Tbl_ShippingDetails = new HashSet<Tbl_ShippingDetails>();
+            this.Tbl_Cart = new HashSet<Tbl_Cart>();
         }
     
         public int MemberId { get; set; }
@@ -36,5 +36,7 @@ namespace mothercare.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_ShippingDetails> Tbl_ShippingDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Cart> Tbl_Cart { get; set; }
     }
 }

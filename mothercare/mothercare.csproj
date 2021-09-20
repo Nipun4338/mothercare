@@ -360,6 +360,9 @@
     <Content Include="Views\Home\ViewProduct.cshtml" />
     <Content Include="Views\Home\CheckoutDetails.cshtml" />
     <Content Include="Views\Home\OrderHistory.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
+    <Content Include="Views\Admin\OrdersEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,6 +22,8 @@
         <EntityTypeShape EntityType="dbmothercareModel.Tbl_CartItems" Width="1.5" PointX="10.5" PointY="1.875" />
         <AssociationConnector Association="dbmothercareModel.FK__Tbl_CartI__CartI__6FE99F9F" />
         <AssociationConnector Association="dbmothercareModel.FK__Tbl_CartI__Produ__70DDC3D8" />
+        <AssociationConnector Association="dbmothercareModel.FK__Tbl_Cart__Member__01142BA1" />
+        <AssociationConnector Association="dbmothercareModel.FK__Tbl_Cart__CartSt__02084FDA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -31,5 +31,7 @@ namespace mothercare.Data
         public virtual Tbl_Product Tbl_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_CartItems> Tbl_CartItems { get; set; }
+        public virtual Tbl_Members Tbl_Members { get; set; }
+        public virtual Tbl_CartStatus Tbl_CartStatus { get; set; }
     }
 }

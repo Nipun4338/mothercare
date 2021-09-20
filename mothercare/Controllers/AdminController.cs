@@ -26,6 +26,16 @@ namespace mothercare.Controllers
             }
             return list;
         }
+        public List<SelectListItem> GetCartStatus()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            var cat = _unitOfWork.GetRepositoryInstance<Tbl_CartStatus>().GetAllRecords();
+            foreach (var item in cat)
+            {
+                list.Add(new SelectListItem { Value = item.CartStatusId.ToString(), Text = item.CartStatus });
+            }
+            return list;
+        }
         [AuthorizationFilter]
         public ActionResult Dashboard()
         {
@@ -165,6 +175,29 @@ namespace mothercare.Controllers
         {
             _unitOfWork.GetRepositoryInstance<Tbl_Category>().Add(tbl);
             return RedirectToAction("Categories");
+        }
+        [AuthorizationFilter]
+        public ActionResult Users()
+        {
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Members>().GetProduct());
+        }
+        [AuthorizationFilter]
+        public ActionResult Orders()
+        {
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Cart>().GetProduct().OrderByDescending(x=>x.CartId));
+        }
+        [AuthorizationFilter]
+        public ActionResult OrdersEdit(int cartId)
+        {
+            ViewBag.CartStatus = GetCartStatus();
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Cart>().GetFirstorDefault(cartId));
+        }
+        [AuthorizationFilter]
+        [HttpPost]
+        public ActionResult OrdersEdit(Tbl_Cart tbl)
+        {
+            _unitOfWork.GetRepositoryInstance<Tbl_Cart>().Update(tbl);
+            return RedirectToAction("Orders");
         }
         public ActionResult Logout()
         {

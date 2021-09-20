@@ -20,17 +20,20 @@
             {
                 @Html.HiddenFor(m => m.CategoryId)
 
+            <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Category Name</label>
-
                     @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", placeholder = "Enter category Name", required = "required", autofocus = "autofocus" })
                     @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
-                <a onclick="window.history.back();" class="btn btn-danger">Cancel</a>
-                <input type="submit" class="btn btn-primary" value="Save" />
-            }
-        </div>
-    </div>
+                <div class="col-md-6">
+                    <a onclick="window.history.back();" class="btn btn-danger">Cancel</a>
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                </div>
+                    }
+                </div>
+            </div>
 </div>
 
