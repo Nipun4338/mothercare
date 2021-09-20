@@ -70,6 +70,14 @@
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="EmailHash" Type="varchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="Tbl_Notice">
+    <Key>
+      <PropertyRef Name="NoticeId" />
+    </Key>
+    <Property Name="NoticeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Notice" Type="text" />
+    <Property Name="NoticeStatus" Type="bit" />
+  </EntityType>
   <EntityType Name="Tbl_Product">
     <Key>
       <PropertyRef Name="ProductId" />
@@ -224,6 +232,7 @@
     <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_MemberRole" EntityType="Self.Tbl_MemberRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Members" EntityType="Self.Tbl_Members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Notice" EntityType="Self.Tbl_Notice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Roles" EntityType="Self.Tbl_Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_ShippingDetails" EntityType="Self.Tbl_ShippingDetails" Schema="dbo" store:Type="Tables" />

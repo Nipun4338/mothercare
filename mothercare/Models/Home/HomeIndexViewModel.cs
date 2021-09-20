@@ -17,6 +17,7 @@ namespace mothercare.Models.Home
 
         public IPagedList<Tbl_Product> ListOfProducts { get; set; }
         public List<Tbl_Slider> slider { get; set; }
+        public List<Tbl_Notice> notice { get; set; }
 
         public HomeIndexViewModel CreateModel(string search, int pageSize, int? page)
         {
@@ -25,10 +26,12 @@ namespace mothercare.Models.Home
             };
             IPagedList<Tbl_Product> data = context.Database.SqlQuery<Tbl_Product>("GetBySearch @search", param).ToList().ToPagedList(page ?? 1, pageSize);
             List<Tbl_Slider> data2 = context.Tbl_Slider.Where(x => x.IsDelete == false && x.IsActive==true).ToList();
+            List<Tbl_Notice> data3 = context.Tbl_Notice.Where(x => x.NoticeStatus == true).ToList();
             return new HomeIndexViewModel
             {
                 ListOfProducts = data,
-                slider=data2
+                slider=data2,
+                notice=data3
             };
         }
     }

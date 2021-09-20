@@ -39,6 +39,7 @@ namespace mothercare.Data
         public virtual DbSet<Tbl_SlideImage> Tbl_SlideImage { get; set; }
         public virtual DbSet<Tbl_Slider> Tbl_Slider { get; set; }
         public virtual DbSet<Tbl_CartItems> Tbl_CartItems { get; set; }
+        public virtual DbSet<Tbl_Notice> Tbl_Notice { get; set; }
     
         public virtual ObjectResult<GetBySearch_Result> GetBySearch(string search)
         {

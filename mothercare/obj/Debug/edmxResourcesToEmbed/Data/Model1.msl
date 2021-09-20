@@ -164,5 +164,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Notice">
+      <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Notice">
+        <MappingFragment StoreEntitySet="Tbl_Notice">
+          <ScalarProperty Name="NoticeStatus" ColumnName="NoticeStatus" />
+          <ScalarProperty Name="Notice" ColumnName="Notice" />
+          <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

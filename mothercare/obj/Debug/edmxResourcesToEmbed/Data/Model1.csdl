@@ -200,6 +200,7 @@
       <End Role="Tbl_CartStatus" EntitySet="Tbl_CartStatus" />
       <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
     </AssociationSet>
+    <EntitySet Name="Tbl_Notice" EntityType="dbmothercareModel.Tbl_Notice" />
   </EntityContainer>
   <ComplexType Name="GetBySearch_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -290,4 +291,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Tbl_Notice">
+    <Key>
+      <PropertyRef Name="NoticeId" />
+    </Key>
+    <Property Name="NoticeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Notice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NoticeStatus" Type="Boolean" />
+  </EntityType>
 </Schema>

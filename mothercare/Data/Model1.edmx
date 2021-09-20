@@ -75,6 +75,14 @@
           <Property Name="Phone" Type="varchar" MaxLength="20" />
           <Property Name="EmailHash" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Tbl_Notice">
+          <Key>
+            <PropertyRef Name="NoticeId" />
+          </Key>
+          <Property Name="NoticeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Notice" Type="text" />
+          <Property Name="NoticeStatus" Type="bit" />
+        </EntityType>
         <EntityType Name="Tbl_Product">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -229,6 +237,7 @@
           <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_MemberRole" EntityType="Self.Tbl_MemberRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Members" EntityType="Self.Tbl_Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Notice" EntityType="Self.Tbl_Notice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Roles" EntityType="Self.Tbl_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_ShippingDetails" EntityType="Self.Tbl_ShippingDetails" Schema="dbo" store:Type="Tables" />
@@ -467,6 +476,7 @@
             <End Role="Tbl_CartStatus" EntitySet="Tbl_CartStatus" />
             <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
           </AssociationSet>
+          <EntitySet Name="Tbl_Notice" EntityType="dbmothercareModel.Tbl_Notice" />
         </EntityContainer>
         <ComplexType Name="GetBySearch_Result">
           <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -557,6 +567,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tbl_Notice">
+          <Key>
+            <PropertyRef Name="NoticeId" />
+          </Key>
+          <Property Name="NoticeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Notice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeStatus" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -723,6 +741,15 @@
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="CartId" ColumnName="CartId" />
                 <ScalarProperty Name="CartItemId" ColumnName="CartItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Notice">
+            <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Notice">
+              <MappingFragment StoreEntitySet="Tbl_Notice">
+                <ScalarProperty Name="NoticeStatus" ColumnName="NoticeStatus" />
+                <ScalarProperty Name="Notice" ColumnName="Notice" />
+                <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
