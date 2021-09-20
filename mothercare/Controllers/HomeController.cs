@@ -49,7 +49,7 @@ namespace mothercare.Controllers
             string md5StringPassword = AppHelper.GetMd5Hash(password);
             var dataItem = db.Tbl_Members.Where(x => x.EmailId == username && x.Password == md5StringPassword).SingleOrDefault();
            
-            bool isLogged = true;
+            string isLogged = "";
             if (dataItem != null)
             { 
                 Session["Username"] = dataItem.EmailId;
@@ -62,11 +62,20 @@ namespace mothercare.Controllers
                 {
                     Session["Role"] = "User";
                 }
-                isLogged = true;
+                if(dataItem.IsActive==false)
+                {
+                    Session["Username"] = null;
+                    Session["Role"] = null;
+                    isLogged = "email";
+                }
+                else
+                {
+                    isLogged = "all";
+                }
             }
             else
             {
-                isLogged = false;
+                isLogged = "none";
             }
             return Json(isLogged, JsonRequestBehavior.AllowGet);
         }

@@ -199,6 +199,18 @@ namespace mothercare.Controllers
             _unitOfWork.GetRepositoryInstance<Tbl_Cart>().Update(tbl);
             return RedirectToAction("Orders");
         }
+        [AuthorizationFilter]
+        public ActionResult UserEdit(int userId)
+        {
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Members>().GetFirstorDefault(userId));
+        }
+        [AuthorizationFilter]
+        [HttpPost]
+        public ActionResult UserEdit(Tbl_Members tbl)
+        {
+            _unitOfWork.GetRepositoryInstance<Tbl_Members>().Update(tbl);
+            return RedirectToAction("Users");
+        }
         public ActionResult Logout()
         {
             Session["Username"] = null;
