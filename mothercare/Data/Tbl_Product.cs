@@ -19,6 +19,7 @@ namespace mothercare.Data
         {
             this.Tbl_Cart = new HashSet<Tbl_Cart>();
             this.Tbl_CartItems = new HashSet<Tbl_CartItems>();
+            this.Tbl_comment = new HashSet<Tbl_comment>();
         }
     
         public int ProductId { get; set; }
@@ -39,5 +40,7 @@ namespace mothercare.Data
         public virtual Tbl_Category Tbl_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_CartItems> Tbl_CartItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_comment> Tbl_comment { get; set; }
     }
 }

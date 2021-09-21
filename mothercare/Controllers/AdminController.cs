@@ -217,5 +217,34 @@ namespace mothercare.Controllers
             Session["Role"] = null;
             return RedirectToAction("Login");
         }
+        [AuthorizationFilter]
+        public ActionResult Notice()
+        {
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Notice>().GetProduct());
+        }
+        [AuthorizationFilter]
+        public ActionResult NoticeEdit(int noticeId)
+        {
+            return View(_unitOfWork.GetRepositoryInstance<Tbl_Notice>().GetFirstorDefault(noticeId));
+        }
+        [AuthorizationFilter]
+        [HttpPost]
+        public ActionResult NoticeEdit(Tbl_Notice tbl)
+        {
+            _unitOfWork.GetRepositoryInstance<Tbl_Notice>().Update(tbl);
+            return RedirectToAction("Notice");
+        }
+        [AuthorizationFilter]
+        public ActionResult NoticeAdd()
+        {
+            return View();
+        }
+        [AuthorizationFilter]
+        [HttpPost]
+        public ActionResult NoticeAdd(Tbl_Notice tbl)
+        {
+            _unitOfWork.GetRepositoryInstance<Tbl_Notice>().Add(tbl);
+            return RedirectToAction("Notice");
+        }
     }
 }

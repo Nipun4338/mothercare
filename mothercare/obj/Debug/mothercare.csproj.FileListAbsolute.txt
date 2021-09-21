@@ -105,8 +105,8 @@ C:\Users\nipun\Documents\mothercare\mothercare\bin\Microsoft.Owin.Security.Twitt
 C:\Users\nipun\Documents\mothercare\mothercare\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\nipun\Documents\mothercare\mothercare\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\nipun\Documents\mothercare\mothercare\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.csproj.AssemblyReference.cache
 C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.csproj.CoreCompileInputs.cache
 C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.csproj.CopyComplete
 C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.dll
 C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.pdb
-C:\Users\nipun\Documents\mothercare\mothercare\obj\Debug\mothercare.csproj.AssemblyReference.cache

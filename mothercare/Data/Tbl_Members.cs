@@ -19,6 +19,7 @@ namespace mothercare.Data
         {
             this.Tbl_ShippingDetails = new HashSet<Tbl_ShippingDetails>();
             this.Tbl_Cart = new HashSet<Tbl_Cart>();
+            this.Tbl_comment = new HashSet<Tbl_comment>();
         }
     
         public int MemberId { get; set; }
@@ -38,5 +39,7 @@ namespace mothercare.Data
         public virtual ICollection<Tbl_ShippingDetails> Tbl_ShippingDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Cart> Tbl_Cart { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_comment> Tbl_comment { get; set; }
     }
 }

@@ -32,7 +32,7 @@
 
                                     </div>
                                      
-                                    <form class="user" onsubmit="SaveUser()">
+                                    <form class="user" id="form14" onsubmit="SaveUser()">
 
                                         <div class="form-group">
 
@@ -82,11 +82,11 @@
 
                                         </div>
 
-                                        <a href="#"  class="btn btn-primary btn-user btn-block">
+                                        <button href="#"  class="btn btn-primary btn-user btn-block">
 
                                             Signup
 
-                                        </a>
+                                        </button>
 
                                         <hr>
 
@@ -125,7 +125,11 @@
 
 
 </div>
-<script>
+<script type="text/javascript">
+    $('#form14').submit(function () {
+        SaveUser()
+        return false;
+    });
     function SaveUser() {
         var user = new Object();
         user.EmailId = $("#email").val();
@@ -137,7 +141,7 @@
         var data = JSON.stringify({
             user: user
         });
-        return $.ajax({
+        $.ajax({
 
             contentType: 'application/json; charset=utf-8',
 
@@ -148,6 +152,7 @@
             url: "/Home/SaveUser",
 
             data: data,
+            async: false,
 
             success: function (result) {
                 if (result == true) {

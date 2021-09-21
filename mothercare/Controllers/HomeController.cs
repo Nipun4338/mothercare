@@ -266,6 +266,7 @@ namespace mothercare.Controllers
             var dataItem = db.Tbl_Members.Where(x => x.EmailId == name).SingleOrDefault();
             cart.MemberId = dataItem.MemberId;
             cart.Date = DateTime.Now;
+            cart.CartStatusId = 1;
             db.Tbl_Cart.Add(cart);
             db.SaveChanges();
             int Id = cart.CartId;

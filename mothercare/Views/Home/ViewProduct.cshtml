@@ -7,7 +7,7 @@
 
 
 <link href="~/Content/Alert.css" rel="stylesheet" />
-
+<link href="~/Content/comment.css" rel="stylesheet" />
 <div>
     <h4>Product Details</h4>
     <hr />
@@ -129,6 +129,24 @@
             <strong>You have to order the product to rate or comment.</strong>
         </div>
     </div>
-
+    <div class="ratingCard">
+        <h2>Rate and Review product</h2>
+        <form method="post">
+            <p class="p_class">
+                <input id="radio1" type="radio" name="radio_rate" value="5">
+                <label for="radio1">&#9786;</label>
+                <input id="radio2" type="radio" name="radio_rate" value="4">
+                <label for="radio2">&#9786;</label>
+                <input id="radio3" type="radio" name="radio_rate" value="3">
+                <label for="radio3">&#9786;</label>
+                <input id="radio4" type="radio" name="radio_rate" value="2">
+                <label for="radio4">&#9786;</label>
+                <input id="radio5" type="radio" name="radio_rate" value="1">
+                <label for="radio5">&#9786;</label>
+            </p>
+            <textarea name="rate_comment" class="comment_area" placeholder="Leave your comment here"></textarea><br>
+            <input type="submit" name="rating_submit" value="Post">
+        </form>
+    </div>
 
 </div>

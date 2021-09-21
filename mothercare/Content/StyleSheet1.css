@@ -8,8 +8,8 @@ body {
 }
 
 .background {
-    width: 1368px;
-    height: 768px;
+    width: 1364px;
+    height: 657px;
     background-image: url('Desktop1.png');
     display: flex;
     justify-content: center;

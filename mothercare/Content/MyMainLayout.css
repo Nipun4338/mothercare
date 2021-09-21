@@ -25,9 +25,7 @@ h6 {
 
 
 /*[3. LOGO]*/
-.logo {
-    margin-bottom: 40px;
-}
+
 
     .logo h1,
     .logo h2 {
@@ -108,6 +106,7 @@ h6 {
     border-top: 2px solid #333;
     padding-top: 10px;
     padding-bottom: 20px;
+
 }
 
     .nav-menus .nav-pills > li > a {

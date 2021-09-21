@@ -212,6 +212,9 @@
     <Compile Include="Data\Tbl_Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Tbl_comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Tbl_MemberRole.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -272,6 +275,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cardView.css" />
+    <Content Include="Content\comment.css" />
     <Content Include="Content\Desktop1.png" />
     <Content Include="Content\MyMainLayout.css" />
     <Content Include="Content\PagedList.css" />
@@ -369,6 +373,9 @@
     <Content Include="Views\Admin\Orders.cshtml" />
     <Content Include="Views\Admin\OrdersEdit.cshtml" />
     <Content Include="Views\Admin\UserEdit.cshtml" />
+    <Content Include="Views\Admin\Notice.cshtml" />
+    <Content Include="Views\Admin\NoticeEdit.cshtml" />
+    <Content Include="Views\Admin\NoticeAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
