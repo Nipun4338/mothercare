@@ -1,4 +1,4 @@
-﻿@model mothercare.Data.Tbl_Product
+﻿@model mothercare.Models.Home.productViewClass
 <link href="~/Content/productView.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Product Details";
@@ -20,13 +20,13 @@
                         <div class="product-imgs">
                             <div class="img-display">
                                 <div class="img-showcase">
-                                    <img src="~/ProductImg/@Model.ProductImage" alt="Product image">
+                                    <img src="~/ProductImg/@Model.products.ProductImage" alt="Product image">
                                 </div>
                             </div>
                             <div class="img-select">
                                 <div class="img-item">
                                     <a href="#" data-id="1">
-                                        <img src="~/ProductImg/@Model.ProductImage" alt="Product image">
+                                        <img src="~/ProductImg/@Model.products.ProductImage" alt="Product image">
                                     </a>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                         <!-- card right -->
                         <div class="product-content">
                             <h2 class="product-title">
-                                @Model.ProductName@if (Model.IsFeatured == true)
+                                @Model.products.ProductName@if (Model.products.IsFeatured == true)
                                 {
                                     <sup>
                                         <span class="badge badge-success" style="background-color:green">New</span>
@@ -52,25 +52,112 @@
                             </h2>
                             <a href="#" class="product-link">visit store</a>
                             <div class="product-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
-                                <span>4.7(21)</span>
+                                @{
+                                    if (@Model.rating2 == null || @Model.rating2 == double.NaN | @Model.rating2 == 0)
+                                    {
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 > 0 && @Model.rating2 < 1)
+                                    {
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 == 1)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 > 1 && @Model.rating2 < 2)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 == 2)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 > 2 && @Model.rating2 < 3)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 == 3)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 > 3 && @Model.rating2 < 4)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 == 4)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    }
+                                    else if (@Model.rating2 > 4 && @Model.rating2 < 5)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-alt"></i>
+                                    }
+                                    else if (@Model.rating2 == 5)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    }
+
+                                }
+
+                                <span>@Model.rating2 (@Model.rater)</span>
                             </div>
                             <div class="product-price">
                                 <!--<p class="last-price">Old Price: <span>$257.00</span></p>-->
-                                <p class="new-price"><span style="color:orange"><b>৳ @Model.Price</b></span></p>
+                                <p class="new-price"><span style="color:orange"><b>৳ @Model.products.Price</b></span></p>
                             </div>
                             <div class="product-detail">
 
 
-                                <p>@Model.Description</p>
+                                <p>@Model.products.Description</p>
                                 <ul>
                                     <!--<li>Color: <span>Black</span></li>-->
                                     @{
-                                        if (Model.IsActive == true)
+                                        if (Model.products.IsActive == true)
                                         {
                                             <li>Available: <span class="badge badge-primary" style="background-color:cornflowerblue"><h5><b>In stock</b></h5></span></li>
                                         }
@@ -79,7 +166,7 @@
                                             <li>Available: <span class="badge badge-primary" style="background-color:red"><h5><b>Out of stock</b></h5></span></li>
                                         }
                                     }
-                                    <li>Category: <span>@Model.Tbl_Category.CategoryName</span></li>
+                                    <li>Category: <span>@Model.products.Tbl_Category.CategoryName</span></li>
                                     <li>Shipping Area: <span>All over the Country</span></li>
                                     <li>Shipping Fee: <span>Free</span></li>
                                 </ul>
@@ -87,9 +174,9 @@
 
                             <div class="purchase-info">
                                 <!--<input type="number" min="0" value="1">-->
-                                @if (Model.Quantity > 0 && Model.IsDelete != null && !(bool)Model.IsDelete)
+                                @if (Model.products.Quantity > 0 && Model.products.IsDelete != null && !(bool)Model.products.IsDelete)
                                 {
-                                    using (Html.BeginForm("AddToCart", "Home", new { productId = Model.ProductId, url = Request.Url.AbsoluteUri }, FormMethod.Post))
+                                    using (Html.BeginForm("AddToCart", "Home", new { productId = Model.products.ProductId, url = Request.Url.AbsoluteUri }, FormMethod.Post))
                                     {
                                         <button type="submit" class="btn" style="background-color:blue">
                                             Add to Cart <i class="fa fa-shopping-cart"></i>
@@ -131,7 +218,7 @@
     </div>
     <div class="ratingCard">
         <h2>Rate and Review product</h2>
-        <form method="post">
+        <form id="form15" onsubmit="ratecomment()">
             <p class="p_class">
                 <input id="radio1" type="radio" name="radio_rate" value="5">
                 <label for="radio1">&#9786;</label>
@@ -143,10 +230,88 @@
                 <label for="radio4">&#9786;</label>
                 <input id="radio5" type="radio" name="radio_rate" value="1">
                 <label for="radio5">&#9786;</label>
+                <input type="hidden" id="product" value="@Model.products.ProductId" />
             </p>
-            <textarea name="rate_comment" class="comment_area" placeholder="Leave your comment here"></textarea><br>
-            <input type="submit" name="rating_submit" value="Post">
+            <textarea id="rate_comment" class="comment_area" placeholder="Leave your comment here" required></textarea><br>
+            @{
+
+                if (Model.cartCheck > 0)
+                {
+                    <input type="submit" name="rating_submit" value="Post" />
+                }
+                else
+                {
+                    <input type="submit" name="rating_submit" value="Post" data-toggle="tooltip" data-placement="top" title="You have to order the product to review" disabled />
+                }
+            }
+
         </form>
     </div>
+    <div style="margin-top:20px" class="ratingCard">
+        <h2>Reviews</h2>
+        @{
+            foreach (var comment in Model.comments)
+            {
+                <div class="card" style="margin-top:20px">
+                    <h4 style="color:cornflowerblue"><strong>@comment.Tbl_Members.FirstName @comment.Tbl_Members.LastName</strong></h4><i>@comment.Date</i>
+                    <h5>@comment.Comment</h5>
+                    <hr />
+                </div>
+            }
+        }
+    </div>
+    <script type="text/javascript">
+        $('#form15').submit(function () {
+            //ratecomment()
+            return false;
+        });
+        function ratecomment() {
+            var rateComment = new Object();
+            rateComment.Comment= $("#rate_comment").val();
+            rateComment.ProductId = $("#product").val();
+            if ($('input[name=radio_rate]:checked', '#form15').val()) {
+                rateComment.Rating = $('input[name=radio_rate]:checked', '#form15').val();
+            }
+            var data = JSON.stringify({
+                rateComment: rateComment
+            });
+
+            $.ajax({
+
+                contentType: 'application/json; charset=utf-8',
+
+                dataType: 'json',
+
+                type: 'POST',
+
+                url: "/Home/RateComment",
+
+                data: data,
+
+                async: false,
+
+                success: function (result) {
+
+                    if (result == true) {
+                        window.location.reload(false);
+
+                    }
+                    else {
+                        alert("Save failed!");
+                    }
+
+                },
+
+                error: function () {
+
+                    alert("Error!")
+
+                },
+
+            });
+
+        }
+
+    </script>
 
 </div>

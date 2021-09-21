@@ -249,6 +249,7 @@
     <Compile Include="Models\Home\forlogin.cs" />
     <Compile Include="Models\Home\HomeIndexViewModel.cs" />
     <Compile Include="Models\Home\Item.cs" />
+    <Compile Include="Models\Home\productViewClass.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Shipping.cs" />

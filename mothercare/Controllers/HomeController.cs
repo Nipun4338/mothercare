@@ -243,8 +243,16 @@ namespace mothercare.Controllers
         }
         public ActionResult ViewProduct(int productId)
         {
-            var dataItem = db.Tbl_Product.Where(x => x.ProductId==productId).SingleOrDefault();
-            return View(dataItem);
+            //var dataItem = db.Tbl_Product.Where(x => x.ProductId==productId).SingleOrDefault();
+            productViewClass pro = new productViewClass();
+            if(Session["Username"]!=null)
+            {
+                return View(pro.CreateModel(productId, Session["Username"].ToString()));
+            }
+            else
+            {
+                return View(pro.CreateModel(productId, "null"));
+            }
         }
         [AuthorizationFilter]
         public ActionResult Checkout()
@@ -367,5 +375,24 @@ namespace mothercare.Controllers
             return View(_unitOfWork.GetRepositoryInstance<Tbl_Cart>().GetAllRecords().OrderByDescending(y=>y.Date).Where(x=>x.MemberId==dataItem.MemberId));
         }
 
+        public JsonResult RateComment(Tbl_comment rateComment)
+        {
+            bool isSuccess = true;
+            try
+            {
+                string name = Session["Username"].ToString();
+                var dataItem = db.Tbl_Members.Where(x => x.EmailId == name).SingleOrDefault();
+                rateComment.MemberId = dataItem.MemberId;
+                rateComment.Date=DateTime.Now;
+                db.Tbl_comment.Add(rateComment);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                isSuccess = false;
+            }
+            return Json(isSuccess, JsonRequestBehavior.AllowGet);
+        }
     }
 }
