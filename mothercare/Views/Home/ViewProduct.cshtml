@@ -1,12 +1,12 @@
 ﻿@model mothercare.Data.Tbl_Product
-
+<link href="~/Content/productView.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Product Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link href="~/Content/productView.css" rel="stylesheet" />
 
+<link href="~/Content/Alert.css" rel="stylesheet" />
 
 <div>
     <h4>Product Details</h4>
@@ -38,14 +38,16 @@
                             <h2 class="product-title">
                                 @Model.ProductName@if (Model.IsFeatured == true)
                                 {
-                                <sup>
-                                    <span class="badge badge-success" style="background-color:green">New</span></sup>
+                                    <sup>
+                                        <span class="badge badge-success" style="background-color:green">New</span>
+                                    </sup>
 
                                 }
                                 else
                                 {
-                                <sup>
-                                <span class="badge badge-warning" style="background-color:sandybrown">Old</span></sup>
+                                    <sup>
+                                        <span class="badge badge-warning" style="background-color:sandybrown">Old</span>
+                                    </sup>
                                 }
                             </h2>
                             <a href="#" class="product-link">visit store</a>
@@ -87,15 +89,15 @@
                                 <!--<input type="number" min="0" value="1">-->
                                 @if (Model.Quantity > 0 && Model.IsDelete != null && !(bool)Model.IsDelete)
                                 {
-                                    using (Html.BeginForm("AddToCart", "Home", new { productId = Model.ProductId, url=Request.Url.AbsoluteUri }, FormMethod.Post))
+                                    using (Html.BeginForm("AddToCart", "Home", new { productId = Model.ProductId, url = Request.Url.AbsoluteUri }, FormMethod.Post))
                                     {
                                         <button type="submit" class="btn" style="background-color:blue">
                                             Add to Cart <i class="fa fa-shopping-cart"></i>
                                         </button>
                                     }
                                 }
-                                        <button type="button" class="btn">Compare</button>
-                                    </div>
+                                <button type="button" class="btn">Compare</button>
+                            </div>
 
                             <div class="social-links">
                                 <p>Share At: </p>
@@ -121,5 +123,12 @@
             </div>
         </div>
     </div>
+    <div class="demo-preview ">
+        <div class="alert alert-warning alert-dismissable fade in">
+            <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true" style="color:white">X</span></button>
+            <strong>You have to order the product to rate or comment.</strong>
+        </div>
+    </div>
+
 
 </div>
