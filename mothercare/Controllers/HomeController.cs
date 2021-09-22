@@ -394,5 +394,19 @@ namespace mothercare.Controllers
             }
             return Json(isSuccess, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult CheckEmailAvailable(string userdata)
+        {
+            System.Threading.Thread.Sleep(200);
+            var searchEmail = db.Tbl_Members.Where(x => x.EmailId == userdata).SingleOrDefault();
+            if(searchEmail!=null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+        }
     }
 }
