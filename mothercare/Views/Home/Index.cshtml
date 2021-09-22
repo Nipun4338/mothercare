@@ -88,7 +88,7 @@
 
 </div>
 
-<div class="olContent f1"><h2 style="color:black">Search Product</h2></div>
+<div class="olContent f1"><h2 style="color:black">Search Product/Category</h2></div>
 <form method="post">
     <div class="olSearch fr">
         <input type="text" name="search" placeholder="Enter Keyword" class="inputComn form-control" />
@@ -109,7 +109,7 @@
                 @{
                     foreach (var cat in Model.categories)
                     {
-                        <li><a href="javascript:void">@cat.CategoryName</a></li>
+                        <li><a href="@Url.Action("Filter", "Home", new {name="category", category=cat.CategoryId})">@cat.CategoryName</a></li>
                     }
                 }
             </ul>
@@ -200,6 +200,7 @@
                             }
 
                         </div>
+                    </a>
                 </div>
             </div>
         }

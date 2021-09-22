@@ -226,7 +226,7 @@ namespace mothercare.Controllers
             return Redirect(url);
 
         }
-        public ActionResult RemoveFromCart(int productId)
+        public ActionResult RemoveFromCart(int productId, string url)
         {
             List<Item> cart = (List<Item>)Session["cart"];
             foreach(var item in cart)
@@ -238,7 +238,7 @@ namespace mothercare.Controllers
                 }
             }
             Session["cart"] = cart;
-            return Redirect("Index");
+            return Redirect(url);
 
         }
         public ActionResult ViewProduct(int productId)
@@ -253,6 +253,11 @@ namespace mothercare.Controllers
             {
                 return View(pro.CreateModel(productId, "null"));
             }
+        }
+        public ActionResult Filter(string name, int category)
+        {
+            FilterClass filter = new FilterClass();
+            return View(filter.CreateModel(name, category));
         }
         [AuthorizationFilter]
         public ActionResult Checkout()

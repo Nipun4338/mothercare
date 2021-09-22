@@ -41,60 +41,71 @@
         transition: max-height 0.2s ease-out;
     }
 </style>
-<h2>Order History</h2>
-
 @{ int count2 = 0;}
 @foreach (var item in Model.ToList())
 {
     count2++;
 }
-@{
-    if (count2 > 0)
-    {
-        foreach (var item in Model.ToList())
-        {
-            <button class="accordion"><b>Order ID: @item.CartId  =>  Date: @item.Date</b></button>
-            <div class="panel">
-                <table class="table table-bordered" style="text-align:center">
-                    <thead>
-                        <tr>
-                            <th style="text-align:center">Payment Type</th>
-                            <th style="text-align:center">Total</th>
-                            <th style="text-align:center">Date</th>
-                            <th style="text-align:center">Order Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>@item.PaymentType</td>
+<link href="~/Content/sidebar.css" rel="stylesheet" />
+<div class="" style="margin-top: 10px;">
+    <div class="title"><strong> Order History</strong></div>
+    <ul id="category-tabs">
+        <li>
+            @{if (count2 > 0)
+                {
+                    foreach (var item in Model.ToList())
+                    {
+                        <div style="margin-top: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);border-radius:10px ">
+                            <a href="javascript:void" class="main-category" style="color: orangered; text-decoration: none; margin: 10px;font-size:15px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> Order ID: @item.CartId <p style="text-align:center">Date: @item.Date</p></a>
+                            <ul class="sub-category-tabs" style="display:none;">
+                                <li>
+                                    <table class="table table-bordered ali" style="text-align:center">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center">Payment Type</th>
+                                                <th style="text-align:center">Total</th>
+                                                <th style="text-align:center">Date</th>
+                                                <th style="text-align:center">Order Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>@item.PaymentType</td>
 
-                            <td>@item.Total</td>
-                            <td>@item.Date</td>
-                            @{
-                                if (@item.Tbl_CartStatus.CartStatus == "Pending")
-                                {
-                                    <td style="color:orangered"><b>@item.Tbl_CartStatus.CartStatus</b></td>
-                                }
-                                else if (@item.Tbl_CartStatus.CartStatus == "Confirmed")
-                                {
-                                    <td style="color:green"><b>@item.Tbl_CartStatus.CartStatus</b></td>
-                                }
-                            }
+                                                <td>@item.Total</td>
+                                                <td>@item.Date</td>
+                                                @{
+                                                    if (@item.Tbl_CartStatus.CartStatus == "Pending")
+                                                    {
+                                                        <td style="color:orangered"><b>@item.Tbl_CartStatus.CartStatus</b></td>
+                                                    }
+                                                    else if (@item.Tbl_CartStatus.CartStatus == "Confirmed")
+                                                    {
+                                                        <td style="color:green"><b>@item.Tbl_CartStatus.CartStatus</b></td>
+                                                    }
+                                                }
 
-                        </tr>
-                    </tbody>
-                </table>            
-            </div>
-        }
-        
-    }
-    else
-    {
-        <div class="alert alert-danger">
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                }
+                else
+                {
+    <div class="alert alert-danger">
         <strong>No Order History!</strong>
-        </div>
-    }
+    </div>
 }
+                                            }
+</li>
+</ul>
+</div>
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script src="~/Content/script.js"></script>
 
 <script>
     var acc = document.getElementsByClassName("accordion");
