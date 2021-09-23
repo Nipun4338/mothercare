@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<mothercare.Data.Tbl_Cart>
+﻿@model  mothercare.Models.Home.OrderHistoryClass
 @{
     ViewBag.Title = "Order History";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -42,7 +42,7 @@
     }
 </style>
 @{ int count2 = 0;}
-@foreach (var item in Model.ToList())
+@foreach (var item in Model.cart.ToList())
 {
     count2++;
 }
@@ -53,7 +53,7 @@
         <li>
             @{if (count2 > 0)
                 {
-                    foreach (var item in Model.ToList())
+                    foreach (var item in Model.cart.ToList())
                     {
                         <div style="margin-top: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);border-radius:10px ">
                             <a href="javascript:void" class="main-category" style="color: orangered; text-decoration: none; margin: 10px;font-size:15px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> Order ID: @item.CartId <p style="text-align:center">Date: @item.Date</p></a>
@@ -84,13 +84,45 @@
                                                         <td style="color:green"><b>@item.Tbl_CartStatus.CartStatus</b></td>
                                                     }
                                                 }
-
                                             </tr>
                                         </tbody>
+
                                     </table>
+                                    <a href="javascript:void" class="main-category" style="color: orangered; text-decoration: none; margin: 10px;font-size:15px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> Details:</a>
+                                    <ul class="sub-category-tabs" style="display:none;">
+                                        <li>
+                                            <table class="table table-bordered ali" style="text-align:center">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="text-align:center">Product Name</th>
+                                                        <th style="text-align:center">Quantity</th>
+                                                        <th style="text-align:center">Price</th>
+                                                        <th style="text-align:center">Total Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @{
+                                                        foreach (var items in Model.cartItems.ToList().Where(x=>x.CartId==item.CartId))
+                                                        {
+                                                            int koto = 0;
+                                                            koto = Convert.ToInt32(items.Quantity * items.Tbl_Product.Price);
+                                                            <tr>
+                                                                <td>@items.Tbl_Product.ProductName</td>
+                                                                <td>@items.Quantity</td>
+                                                                <td>@items.Tbl_Product.Price</td>
+                                                                <td>@koto</td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+
+                                            </table>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                        </div>
+                                    </ul>
+</div>
                     }
                 }
                 else

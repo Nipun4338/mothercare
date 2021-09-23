@@ -375,9 +375,9 @@ namespace mothercare.Controllers
         [AuthorizationFilter]
         public ActionResult OrderHistory()
         {
+            OrderHistoryClass history = new OrderHistoryClass();
             string name = Session["Username"].ToString();
-            var dataItem = db.Tbl_Members.Where(x => x.EmailId == name).SingleOrDefault();
-            return View(_unitOfWork.GetRepositoryInstance<Tbl_Cart>().GetAllRecords().OrderByDescending(y=>y.Date).Where(x=>x.MemberId==dataItem.MemberId));
+            return View(history.CreateModel(name));
         }
 
         public JsonResult RateComment(Tbl_comment rateComment)

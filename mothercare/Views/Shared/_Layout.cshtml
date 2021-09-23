@@ -20,7 +20,7 @@
             <div class="col-md-2 col-sm-2 col-xs-2">
                 <a href="~/Home/Index">
                     <div class="logo">
-                        <img src="~/Content/mothercare.png" class="img-responsive" width="300px" height="150px" />
+                        <img src="~/Content/mothercare.png" class="img-responsive" width="300" height="150" />
                     </div>
                 </a>
             </div>
@@ -39,7 +39,7 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         @{ 
-                                            if(Session["Role"]=="Admin")
+                                            if(Session["Role"].ToString()=="Admin")
                                             {
                                                 <a href="@Url.Action("Dashboard","Admin")">Admin Panel</a>
                                             }
