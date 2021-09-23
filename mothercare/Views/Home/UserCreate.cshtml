@@ -1,138 +1,63 @@
-﻿@{ 
-    ViewBag.Title = "Sign Up";
+﻿
+@{
+    Layout = null;
 }
+<!DOCTYPE html>
 
-<div class="bg-gradient-primary">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Sign Up | Mothercare</title>
+    <link href="~/Content/SignUpStyleSheet.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <div class="container">
+    <style type="text/css">
+        #Text1 {
+            width: 269px;
+            height: 51px;
+            margin-left: 8px;
+            margin-top: 8px;
+        }
 
-        <!-- Outer Row -->
+        #Text2 {
+            width: 253px;
+            height: 51px;
+            margin-left: 30px;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
 
-        <div class="row justify-content-center">
+    <div class="background">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="form-box">
+            <div class="text-box1">
+                <form class="user" id="form14" onsubmit="SaveUser()">
+                    &nbsp;<input type="text" class="form-control form-control-user" id="firstname" placeholder="First Name" required>
+                    <input type="text" class="form-control form-control-user" id="lastname" placeholder="Last Name" required>&nbsp;
+                    <input type="email" class="form-control form-control-user" id="email" placeholder="E-mail" onchange="CheckEmail()" required>
+                    <p style=" position: absolute; width: 511px; height: 52px; left: 14px; top: 160px;" id="Status"></p>
+                    <input type="tel" class="form-control form-control-user" id="phone" placeholder="Phone" required>
+                    <input type="text" class="form-control form-control-user" id="address" placeholder="Address" required>&nbsp;&nbsp;
+                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" required />
+                    <button id="Button2" class="btn btn-primary btn-user btn-block">
 
-                    <div class="card-body p-0">
+                        Sign Up
 
-                        <!-- Nested Row within Card Body -->
-
-                        <div class="row">
-
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-
-                            <div class="col-lg-6">
-
-                                <div class="p-5">
-
-                                    <div class="text-center">
-
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-
-                                    </div>
-                                     
-                                    <form class="user" id="form14" onsubmit="SaveUser()">
-
-                                        <div class="form-group">
-
-                                            <input type="text" class="form-control form-control-user" id="firstname" placeholder="First Name" required>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <input type="text" class="form-control form-control-user" id="lastname" placeholder="Last Name" required>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <input type="email" class="form-control form-control-user" id="email" placeholder="E-mail" onchange="CheckEmail()" required>
-
-                                        </div>
-                                        <div class="form-group">
-
-                                            <label class="col-sm-6"></label>
-                                            <div class="col-sm-10">
-                                                <p id="Status"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <input type="tel" class="form-control form-control-user" id="phone" placeholder="Phone" required>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <input type="text" class="form-control form-control-user" id="address" placeholder="Address" required>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Password" required>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <div class="custom-control custom-checkbox small">
-
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
-
-                                            </div>
-
-                                        </div>
-
-                                        <button href="#" class="btn btn-primary btn-user btn-block">
-
-                                            Signup
-
-                                        </button>
-
-                                        <hr>
-
-                                    </form>
-
-                                    <hr>
-
-                                    <div class="text-center">
-
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-
-                                    </div>
-
-                                    <div class="text-center">
-
-                                        <a class="small" href="Login">Login!</a>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+                    </button>
+                    <a style="position: absolute; width: 302px; height: 65px; left: 220px; top: 540px;cursor:pointer; font-weight:bold; font-size:medium" onclick="location.href='@Url.Action("Login", "Home")';return false;">
+                        Already a member?
+                    </a>
+                </form>
             </div>
-
         </div>
-
     </div>
-
-
-
-</div>
-<script type="text/javascript">
+    <script type="text/javascript">
     function CheckEmail() {
         $("#Status").html("Checking...");
         $.post("@Url.Action("CheckEmailAvailable", "Home")",
@@ -184,7 +109,6 @@
             success: function (result) {
                 if (result == true) {
                     window.location.href = "/Home/Login";
-                    alert("Save Success!");
                 }
 
                 else {
@@ -202,4 +126,6 @@
         });
 
     }
-</script>
+    </script>
+</body>
+</html>

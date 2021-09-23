@@ -1,0 +1,164 @@
+﻿* {
+    font-family: Montserrat;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.background {
+    width: 1364px;
+    height: 657px;
+    background-image: url('SIGN UP.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    position: absolute;
+    width: 545px;
+    height: 580px;
+    left: 660px;
+    top: 54px;
+    background: #F1EBF3;
+    border-radius: 24px;
+}
+
+.text-box1 #Button2 {
+    position: absolute;
+    width: 302px;
+    height: 65px;
+    left: 125px;
+    top: 450px;
+    background: #24C916;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #FFFFFF;
+
+}
+
+.text-box1 #Button1 {
+    position: absolute;
+    width: 362px;
+    height: 65px;
+    left: 17px;
+    top: 230px;
+    background: #76299B;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.text-box1 #firstname {
+    position: absolute;
+    width: 247px;
+    height: 52px;
+    left: 15px;
+    top: 22px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    right: 285px;
+
+}
+
+.text-box1 #lastname {
+    position: absolute;
+    width: 244px;
+    height: 52px;
+    left: 280px;
+    top: 22px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.text-box1 #email {
+    position: absolute;
+    width: 511px;
+    height: 52px;
+    left: 14px;
+    top: 103px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.text-box1 #phone {
+    position: absolute;
+    width: 511px;
+    height: 52px;
+    left: 14px;
+    top: 182px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.text-box1 #address {
+    position: absolute;
+    width: 511px;
+    height: 52px;
+    left: 14px;
+    top: 266px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.text-box1 #password {
+    position: absolute;
+    width: 511px;
+    height: 52px;
+    left: 14px;
+    top: 353px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.text-box1 #Password2 {
+    position: absolute;
+    width: 511px;
+    height: 52px;
+    left: 14px;
+    top: 438px;
+    background: #FFFFFF;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.text-box1 #Button1 {
+    position: absolute;
+    width: 197px;
+    height: 50px;
+    left: 332px;
+    top: 513px;
+    background: #24C916;
+    border: 1.5px solid #76299B;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(118, 41, 155, 0.56);
+    padding-left: 10px;
+}

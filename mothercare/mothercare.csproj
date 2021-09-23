@@ -285,6 +285,7 @@
     <Content Include="Content\productView.css" />
     <Content Include="Content\script.js" />
     <Content Include="Content\sidebar.css" />
+    <Content Include="Content\SignUpStyleSheet.css" />
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
