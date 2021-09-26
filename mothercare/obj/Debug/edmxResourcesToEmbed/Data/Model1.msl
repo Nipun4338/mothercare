@@ -71,6 +71,7 @@
     <EntitySetMapping Name="Tbl_Product">
       <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Product">
         <MappingFragment StoreEntitySet="Tbl_Product">
+          <ScalarProperty Name="rating" ColumnName="rating" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />

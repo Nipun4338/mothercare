@@ -110,6 +110,7 @@
           <Property Name="IsFeatured" Type="bit" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="rating" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_Roles">
           <Key>
@@ -410,6 +411,7 @@
           <NavigationProperty Name="Tbl_Category" Relationship="Self.FK__Tbl_Produ__Categ__25869641" FromRole="Tbl_Product" ToRole="Tbl_Category" />
           <NavigationProperty Name="Tbl_CartItems" Relationship="dbmothercareModel.FK__Tbl_CartI__Produ__70DDC3D8" FromRole="Tbl_Product" ToRole="Tbl_CartItems" />
           <NavigationProperty Name="Tbl_comment" Relationship="dbmothercareModel.FK__Tbl_comme__Produ__2A164134" FromRole="Tbl_Product" ToRole="Tbl_comment" />
+          <Property Name="rating" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_Roles">
           <Key>
@@ -743,6 +745,7 @@
           <EntitySetMapping Name="Tbl_Product">
             <EntityTypeMapping TypeName="dbmothercareModel.Tbl_Product">
               <MappingFragment StoreEntitySet="Tbl_Product">
+                <ScalarProperty Name="rating" ColumnName="rating" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />

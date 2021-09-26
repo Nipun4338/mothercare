@@ -20,7 +20,7 @@ namespace mothercare.Controllers
         public ActionResult Index(string search, int? page)
         {
             HomeIndexViewModel model = new HomeIndexViewModel();
-            return View(model.CreateModel(search, 4, page));
+            return View(model.CreateModel(search, 16, page));
         }
 
         public ActionResult AccessDenied()
@@ -41,7 +41,14 @@ namespace mothercare.Controllers
         }
         public ActionResult UserCreate()
         {
-            return View();
+            if (Session["Username"] == null)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("Index");
+            }
         }
 
         public JsonResult CheckLogin(string username, string password)
@@ -156,14 +163,11 @@ namespace mothercare.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Location()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -391,6 +395,28 @@ namespace mothercare.Controllers
                 rateComment.Date=DateTime.Now;
                 db.Tbl_comment.Add(rateComment);
                 db.SaveChanges();
+                double rating = 0, counter = 0;
+                List<Tbl_comment> data5 = _unitOfWork.GetRepositoryInstance<Tbl_comment>().GetAllRecords().Where(x => x.Rating != null && x.ProductId == rateComment.ProductId).ToList();
+                if (data5 != null)
+                {
+                    foreach (var rate in data5)
+                    {
+                        counter++;
+                        rating += Convert.ToDouble(rate.Rating);
+                    }
+                    if (rating != 0 && counter != 0)
+                    {
+                        rating = rating / counter;
+                    }
+                    else
+                    {
+                        rating = 0;
+                    }
+                    rating = Math.Round(rating, 2);
+                }
+                var data =_unitOfWork.GetRepositoryInstance<Tbl_Product>().GetFirstorDefault(Convert.ToInt32(rateComment.ProductId));
+                data.rating = Convert.ToDecimal(rating);
+                _unitOfWork.GetRepositoryInstance<Tbl_Product>().Update(data);
             }
             catch (Exception ex)
             {

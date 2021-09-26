@@ -272,6 +272,7 @@
     <Content Include="AdminStyle\index.html" />
     <Content Include="AdminStyle\js\datatables-simple-demo.js" />
     <Content Include="AdminStyle\js\scripts.js" />
+    <Content Include="Content\AboutUsStyleSheet.css" />
     <Content Include="Content\Alert.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -333,7 +334,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -383,6 +383,7 @@
     <Content Include="Views\Admin\NoticeEdit.cshtml" />
     <Content Include="Views\Admin\NoticeAdd.cshtml" />
     <Content Include="Views\Home\Filter.cshtml" />
+    <Content Include="Views\Home\Location.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

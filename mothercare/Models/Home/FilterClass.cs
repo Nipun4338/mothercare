@@ -23,6 +23,11 @@ namespace mothercare.Models.Home
                 data1 = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetAllRecords().Where(x => x.CategoryId==category).ToList();
                 count = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetAllRecords().Where(x => x.CategoryId == category).ToList().Count();
             }
+            else if (name == "rating")
+            {
+                data1 = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetAllRecords().Where(x => Convert.ToDouble(x.rating)>=category-1 && Convert.ToDouble(x.rating)<=category).ToList();
+                count = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetAllRecords().Where(x => Convert.ToDouble(x.rating)>=category-1 && Convert.ToDouble(x.rating)<=category).ToList().Count();
+            }
             if (data1 != null)
             {
                 return new FilterClass

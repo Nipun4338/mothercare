@@ -91,7 +91,7 @@
 <div class="olContent f1"><h2 style="color:black">Search Product/Category</h2></div>
 <form method="post">
     <div class="olSearch fr">
-        <input type="text" name="search" placeholder="Enter Keyword" class="inputComn form-control" />
+        <input type="text" name="search" placeholder="Enter Keyword" class="inputComn form-control"  required/>
         <div class="searchIcon">
             <button type="submit" class="btn btn-primary">
                 <i class="fa fa-search"></i>
@@ -118,29 +118,39 @@
             <a href="javascript:void" class="main-category" style="color:orangered"> Rating<i class="fa fa-plus"></i></a>
             <ul class="sub-category-tabs product-rating" style="display:none;">
                 <li class="icon-d">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+                    <button style="text-decoration: none; padding: 0; border: none; background: none;" onclick="location.href='@Url.Action("Filter", "Home", new {name="rating", category=5})'" type="button">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </button>
                 </li>
                 <li class="icon-d">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+                    <button style="text-decoration: none; padding: 0; border: none; background: none;" onclick="location.href='@Url.Action("Filter", "Home", new {name="rating", category=4})'" type="button">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </button>
                 </li>
                 <li class="icon-d">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+                    <button style="text-decoration: none; padding: 0; border: none; background: none;" onclick="location.href='@Url.Action("Filter", "Home", new {name="rating", category=3})'" type="button">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </button>
                 </li>
                 <li class="icon-d">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+                    <button style="text-decoration: none; padding: 0; border: none; background: none;" onclick="location.href='@Url.Action("Filter", "Home", new {name="rating", category=2})'" type="button">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </button>
                 </li>
                 <li class="icon-d">
-                    <i class="fa fa-star"></i>
+                    <button style="text-decoration: none; padding: 0; border: none; background: none;" onclick="location.href='@Url.Action("Filter", "Home", new {name="rating", category=1})'" type="button">
+                        <i class="fa fa-star"></i>
+                    </button>
                 </li>
             </ul>
         </li>
@@ -161,7 +171,7 @@
     @foreach (var item in Model.ListOfProducts)
     {
         <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
-            <div class="thumbnail product-item" style="height:300px">
+            <div class="thumbnail product-item" style="height:350px">
                 <a href="@Url.Action("ViewProduct", "Home", new {productId=item.ProductId})" style="text-decoration: none;">
                     <img class="img-responsive .bg-secondary.bg-gradient" title="Click to View Product detail"
                          style="cursor:pointer;height:160px;width:100%"

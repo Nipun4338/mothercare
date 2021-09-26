@@ -1,6 +1,6 @@
 ﻿@using mothercare.Models.Home
 @{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Location";
     Layout = null;
 }
 <!DOCTYPE html>
@@ -16,7 +16,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/AboutUsStyleSheet.css" rel="stylesheet" />
-
 
 </head>
 <body>
@@ -109,18 +108,29 @@
                 <div class="nav-menus">
                     <ul class="nav nav-pills">
                         <li><a style="border-radius: initial;" href="@Url.Action("Index","Home")">Home</a></li>
-                        <li><a style="border-radius: initial;" href="@Url.Action("Location","Home")">Location</a></li>
-                        <li class="active"><a style="border-radius: initial;" href="@Url.Action("About","Home")">About</a></li>
+                        <li class="active"><a style="border-radius: initial;" href="@Url.Action("Location","Home")">Location</a></li>
+                        <li><a style="border-radius: initial;" href="@Url.Action("About","Home")">About</a></li>
                     </ul>
                 </div>
             </div>
 
         </div>
         <form id="form1">
-            <h1 style="text-align:center"><i>The Team</i></h1>
-            <div class="background">
-
+            <h1 style="text-align:center"><i>Location</i></h1>
+            <div class="gmap_canvas" style="margin:0 auto;">
+                <iframe height="400" width="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=ahsanullah%20university%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
             </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6" style="color: #000;background-image: url('assets/call.jpg');background-size: cover;">
+                        <h1>CONTACT US</h1>
+                        <p><a href="https://aust.edu/">Ahsanullah University of science and technology</a></p>
+                        <p>141 & 142, Love Road, Dhaka 1208</p>
+                        <h6>Phone No :- <a href="tel:019919494048">019919494048</a></h6>
+                        <h6>Email :- <a href="mailto:ahsanullah@gmail.com">ahsanullah@gmail.com</a></h6>
+                    </div>
+                    </div>
+                </div>
         </form>
         <hr />
         <footer>

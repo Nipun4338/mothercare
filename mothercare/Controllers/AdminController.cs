@@ -113,6 +113,7 @@ namespace mothercare.Controllers
             }
             tbl.ProductImage = pic;
             tbl.CreatedDate = DateTime.Now;
+            tbl.IsDelete = false;
             _unitOfWork.GetRepositoryInstance<Tbl_Product>().Add(tbl);
             return RedirectToAction("Product");
         }
