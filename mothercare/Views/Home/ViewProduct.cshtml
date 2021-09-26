@@ -248,12 +248,103 @@
         </form>
     </div>
     <div style="margin-top:20px" class="ratingCard">
-        <h2>Reviews</h2>
+        <h2 style="font-weight:bold">Reviews</h2>
         @{
             foreach (var comment in Model.comments)
             {
                 <div class="card" style="margin-top:20px">
-                    <h4 style="color:cornflowerblue"><strong>@comment.Tbl_Members.FirstName @comment.Tbl_Members.LastName</strong></h4><i>@comment.Date</i>
+                            <h4 style="color:cornflowerblue">
+                                <strong>@comment.Tbl_Members.FirstName @comment.Tbl_Members.LastName</strong>
+                                <div class="pull-right" style="color:orange">
+                                    @{
+                                        if (comment.Rating != null)
+                                        {
+                                            if (comment.Rating > 4 && comment.Rating < 5)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-alt"></i>
+                                            }
+                                            else if (comment.Rating > 3 && comment.Rating < 4)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-alt"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating > 2 && comment.Rating < 3)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-alt"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating > 1 && comment.Rating < 2)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-alt"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating > 0 && comment.Rating < 1)
+                                            {
+                                                <i class="fa fa-star-half-alt"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating == 1)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating == 2)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating == 3)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating == 4)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            }
+                                            else if (comment.Rating == 5)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            }
+                                        }
+
+                                    }
+                                </div>
+
+                            </h4><i>@comment.Date</i>
                     <h5>@comment.Comment</h5>
                     <hr />
                 </div>
