@@ -1,5 +1,8 @@
 # mothercare
-Mothercare - An online shop especially for maternity products.
+"Mother Care - For your Loved Ones" is offering an emergency health care solution for pregnant women. As we are 
+passing through a pandemic, it’s really difficult sometimes finding emergency products and maternity 
+instruments in this hard time. Here we're gathering all of them in an online shop. 
+    The project took almost 13 days to shape like the video provided below.
 
 ## Used
   Frontend  | Backend
