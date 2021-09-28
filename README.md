@@ -21,12 +21,11 @@ instruments. So here is all of them as an online shop.
   - Admin’s Perspective -</br>
     - Add products, categories and slides.</br>
     - Change the status of orders.</br>
-    - Monitor user's comment.</br>
     - Customize products.</br>
     - Customize notices.</br></br>
    
   - User’s Perspective -</br>
-    - Can buy maternity product from shop.</br>
+    - Can buy maternity products from shop.</br>
     - Can rate confirmed products. </br>
     - Can search products by their category and rating. </br>
 
