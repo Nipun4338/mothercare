@@ -22,8 +22,9 @@ Mothercare - An online shop especially for maternity products.
     - Customize notices.</br></br>
    
   - User’s Perspective -</br>
-    - Can buy maternity products </br>
-    from shop.</br>
+    - Can buy maternity product from shop.</br>
     - Can rate confirmed products. </br>
-    - Can search products by their 
-    category and rating. </br>
+    - Can search products by their category and rating. </br>
+
+## Details
+[![For Details](https://img.youtube.com/vi/uXxFRcwUoa4/hqdefault.jpg)](https://youtu.be/uXxFRcwUoa4)
