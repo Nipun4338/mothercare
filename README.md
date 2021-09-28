@@ -15,7 +15,7 @@ instruments. So here is all of them as an online shop.
   JQuery |
   Ajax | 
   
-    Framework:  ASP. Net MVC
+    Framework:  ASP.Net MVC
  
 ## Key Features
   - Admin’s Perspective -</br>
