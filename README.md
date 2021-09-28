@@ -14,12 +14,12 @@ Mothercare - An online shop especially for maternity products.
     Framework:  ASP. Net MVC
  
 ## Key Features
-  Admin’s Perspective -</br>
-    ● Add products, categories and slides.</br>
-    ● Change the status of orders.</br>
-    ● Monitor user's comment.</br>
-    ● Customize products.</br>
-    ● Customize notices.</br></br>
+  - Admin’s Perspective -</br>
+    - ● Add products, categories and slides.</br>
+    - ● Change the status of orders.</br>
+    - ● Monitor user's comment.</br>
+    - ● Customize products.</br>
+    - ● Customize notices.</br></br>
    
   User’s Perspective -</br>
     ● Can buy maternity products </br>
