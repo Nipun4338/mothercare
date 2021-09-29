@@ -29,5 +29,8 @@ instruments. So here is all of them as an online shop.
     - Can rate confirmed products. </br>
     - Can search products by their category and rating. </br>
 
+## ERD
+[![ERD](EntityDesignerDiagram.png)]
+
 ## Details
 [![For Details](https://img.youtube.com/vi/uXxFRcwUoa4/hqdefault.jpg)](https://youtu.be/uXxFRcwUoa4)
