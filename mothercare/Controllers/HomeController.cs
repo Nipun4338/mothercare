@@ -107,7 +107,7 @@ namespace mothercare.Controllers
                 db.SaveChanges();
                 MailMessage msg = new MailMessage();
                 System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
-                string link = "https://localhost:44301/Home/Verify?email="+user.EmailId+"&hash=" + user.EmailHash;
+                string link = "http://mothercare.somee.com/Home/Verify?email=" + user.EmailId+"&hash=" + user.EmailHash;
                 try
                 {
                     msg.Subject = "Regarding Registration";
