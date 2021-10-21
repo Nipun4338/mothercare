@@ -2,14 +2,16 @@
     font-family: Montserrat;
 }
 
-body {
-    margin: 0px;
-    padding: 0px;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .background {
-    width: 1364px;
-    height: 657px;
+    position: relative;
+    width: 100%;
+    height: 100%;
     background-image: url('Desktop1.png');
     display: flex;
     justify-content: center;
@@ -17,11 +19,7 @@ body {
 }
 
     .background #Button3 {
-        position: absolute;
-        width: 179px;
-        height: 44px;
-        left: 36px;
-        top: 695px;
+        position: relative;
         background: #FFFFFF;
         border: 1.5px solid #76299B;
         box-sizing: border-box;
@@ -32,21 +30,16 @@ body {
     }
 
 .form-box {
-    position: absolute;
-    width: 397px;
-    height: 530px;
-    left: 900px;
-    top: 60px;
+    position: relative;
+    height: 290px;
     background: #FFFFFF;
     border-radius: 24px;
 }
 
 .text-box1 #exampleInputUser {
-    position: absolute;
-    width: 362px;
-    height: 65px;
-    left: 16px;
-    top: 38px;
+    position: relative;
+    height: 50px;
+    margin-top: 50%;
     padding: 10px;
     background: #FFFFFF;
     border: 1.5px solid #76299B;
@@ -62,11 +55,8 @@ body {
 }
 
 .text-box1 #exampleInputPassword {
-    position: absolute;
-    width: 362px;
-    height: 65px;
-    left: 16px;
-    top: 134px;
+    position: relative;
+    height: 50px;
     padding: 10px;
     background: #FFFFFF;
     border: 1.5px solid #76299B;
@@ -86,11 +76,8 @@ body {
 }
 
 .text-box1 #Button1 {
-    position: absolute;
-    width: 362px;
-    height: 65px;
-    left: 17px;
-    top: 230px;
+    position: relative;
+    height: 50px;
     background: #76299B;
     border: 1.5px solid #76299B;
     box-sizing: border-box;
@@ -101,11 +88,7 @@ body {
 }
 
 a {
-    position: absolute;
-    width: 362px;
-    height: 25px;
-    left: 80px;
-    top: 326px;
+    position: relative;
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -118,11 +101,9 @@ a {
 }
 
 .text-box1 #Button2 {
-    position: absolute;
-    width: 302px;
-    height: 65px;
-    left: 47px;
-    top: 398px;
+    position: relative;
+    height: 50px;
+    margin-top:15px;
     background: #24C916;
     border: 1.5px solid #76299B;
     box-sizing: border-box;
