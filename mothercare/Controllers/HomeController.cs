@@ -269,7 +269,7 @@ namespace mothercare.Controllers
             return View();
         }
         [AuthorizationFilter]
-        public ActionResult CheckoutDetails()
+        public ActionResult CheckoutDetails(string guid)
         {
             int Total2 = 0;
             Tbl_Cart cart = new Tbl_Cart();
@@ -284,9 +284,10 @@ namespace mothercare.Controllers
             cart.MemberId = dataItem.MemberId;
             cart.Date = DateTime.Now;
             cart.CartStatusId = 1;
+            cart.OrderId = guid;
             db.Tbl_Cart.Add(cart);
             db.SaveChanges();
-            int Id = cart.CartId;
+            int Id = Convert.ToInt32(cart.OrderId);
             foreach (Item item in (List<Item>)Session["cart"])
             {
                 Tbl_CartItems cartItems = new Tbl_CartItems();

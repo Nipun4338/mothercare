@@ -56,7 +56,7 @@
                     foreach (var item in Model.cart.ToList())
                     {
                         <div style="margin-top: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);border-radius:10px ">
-                            <a href="javascript:void" class="main-category" style="color: orangered; text-decoration: none; margin: 10px;font-size:15px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> Order ID: @item.CartId <p style="text-align:center">Date: @item.Date</p></a>
+                            <a href="javascript:void" class="main-category" style="color: orangered; text-decoration: none; margin: 10px;font-size:15px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> Order ID: @item.OrderId <p style="text-align:center">Date: @item.Date</p></a>
                             <ul class="sub-category-tabs" style="display:none;">
                                 <li>
                                     <table class="table table-bordered ali" style="text-align:center">
@@ -102,7 +102,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @{
-                                                        foreach (var items in Model.cartItems.ToList().Where(x=>x.CartId==item.CartId))
+                                                        foreach (var items in Model.cartItems.ToList().Where(x=>x.CartId==Convert.ToInt32(item.OrderId)))
                                                         {
                                                             int koto = 0;
                                                             koto = Convert.ToInt32(items.Quantity * items.Tbl_Product.Price);

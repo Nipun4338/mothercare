@@ -27,6 +27,7 @@ namespace mothercare.Data
         public string PaymentType { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> Total { get; set; }
+        public string OrderId { get; set; }
     
         public virtual Tbl_Product Tbl_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

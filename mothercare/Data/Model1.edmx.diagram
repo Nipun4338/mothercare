@@ -28,6 +28,7 @@
         <EntityTypeShape EntityType="dbmothercareModel.Tbl_comment" Width="1.5" PointX="10.25" PointY="5.125" />
         <AssociationConnector Association="dbmothercareModel.FK__Tbl_comme__Membe__29221CFB" />
         <AssociationConnector Association="dbmothercareModel.FK__Tbl_comme__Produ__2A164134" />
+        <EntityTypeShape EntityType="dbmothercareModel.sysdiagram" Width="1.5" PointX="3.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

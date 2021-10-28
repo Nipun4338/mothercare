@@ -23,6 +23,7 @@
     <NavigationProperty Name="Tbl_CartItems" Relationship="dbmothercareModel.FK__Tbl_CartI__CartI__6FE99F9F" FromRole="Tbl_Cart" ToRole="Tbl_CartItems" />
     <NavigationProperty Name="Tbl_Members" Relationship="dbmothercareModel.FK__Tbl_Cart__Member__01142BA1" FromRole="Tbl_Cart" ToRole="Tbl_Members" />
     <NavigationProperty Name="Tbl_CartStatus" Relationship="dbmothercareModel.FK__Tbl_Cart__CartSt__02084FDA" FromRole="Tbl_Cart" ToRole="Tbl_CartStatus" />
+    <Property Name="OrderId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Tbl_CartStatus">
     <Key>
@@ -213,6 +214,7 @@
       <End Role="Tbl_Product" EntitySet="Tbl_Product" />
       <End Role="Tbl_comment" EntitySet="Tbl_comment" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="dbmothercareModel.sysdiagram" />
   </EntityContainer>
   <ComplexType Name="GetBySearch_Result">
     <Property Type="Int32" Name="ProductId" Nullable="false" />
@@ -348,4 +350,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

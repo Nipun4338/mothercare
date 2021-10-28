@@ -51,6 +51,9 @@ else
             <tr>
                 <td colspan="4" class="text-right"><b>Total: @total /=</b></td>
             </tr>
+            @{
+                Session["SesTotal"] = total;
+            }
 
         </tbody>
     </table>
@@ -69,7 +72,7 @@ else
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <a type="button" class="btn btn-primary" href="@Url.Action("CheckoutDetails","Home")">Yes</a>
+                    <a type="button" class="btn btn-primary" href="@Url.Action("PaymentWithPaypal", "Payment")">Yes</a>
                 </div>
             </div>
         </div>
