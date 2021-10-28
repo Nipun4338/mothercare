@@ -28,6 +28,7 @@ instruments. So here is all of them as an online shop.
     - Can buy maternity products from shop.</br>
     - Can rate confirmed products. </br>
     - Can search products by their category and rating. </br>
+    - Paypal payment gateway integrated.
 
 ## ERD
 ![ERD](EntityDesignerDiagram.png)
