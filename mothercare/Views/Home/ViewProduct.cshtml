@@ -237,9 +237,19 @@
             <textarea id="rate_comment" class="comment_area" placeholder="Leave your comment here" required></textarea><br>
             @{
 
-                if (Model.cartCheck > 0)
+                if (Model.cartCheck > 0 && Model.already == 0)
                 {
                     <input type="submit" name="rating_submit" value="Post" />
+                }
+                else if (Model.cartCheck > 0 && Model.already > 0)
+                {
+                    <input type="submit" name="rating_submit" value="Post" data-toggle="tooltip" data-placement="top" title="You have already commented" disabled />
+                    <div class="demo-preview ">
+                        <div class="alert alert-info alert-dismissable fade in">
+                            <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true" style="color:white">X</span></button>
+                            <strong>You have already commented.</strong>
+                        </div>
+                    </div>
                 }
                 else
                 {

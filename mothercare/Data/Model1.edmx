@@ -41,9 +41,9 @@
             <PropertyRef Name="CartItemId" />
           </Key>
           <Property Name="CartItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CartId" Type="int" />
           <Property Name="ProductId" Type="int" />
           <Property Name="Quantity" Type="int" />
+          <Property Name="CartId" Type="int" />
         </EntityType>
         <EntityType Name="Tbl_CartStatus">
           <Key>
@@ -201,6 +201,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Tbl_CartI__CartI__65370702">
+          <End Role="Tbl_Cart" Type="Self.Tbl_Cart" Multiplicity="0..1" />
+          <End Role="Tbl_CartItems" Type="Self.Tbl_CartItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Cart">
+              <PropertyRef Name="CartId" />
+            </Principal>
+            <Dependent Role="Tbl_CartItems">
+              <PropertyRef Name="CartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Tbl_CartI__Produ__70DDC3D8">
           <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="0..1" />
           <End Role="Tbl_CartItems" Type="Self.Tbl_CartItems" Multiplicity="*" />
@@ -291,6 +303,10 @@
           <AssociationSet Name="FK__Tbl_Cart__Produc__24927208" Association="Self.FK__Tbl_Cart__Produc__24927208">
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />
             <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_CartI__CartI__65370702" Association="Self.FK__Tbl_CartI__CartI__65370702">
+            <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
+            <End Role="Tbl_CartItems" EntitySet="Tbl_CartItems" />
           </AssociationSet>
           <AssociationSet Name="FK__Tbl_CartI__Produ__70DDC3D8" Association="Self.FK__Tbl_CartI__Produ__70DDC3D8">
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />

@@ -17,6 +17,8 @@ namespace mothercare.Models.Home
         public List<Tbl_comment> ratings { get; set; }
         public int cartCheck = 0;
         public int data4 = 0;
+        public int data6 = 0;
+        public int already;
         public double rating = 0, rating2=0, counter=0, rater=0;
         public productViewClass CreateModel(int productId, string session)
         {
@@ -25,6 +27,7 @@ namespace mothercare.Models.Home
             if(session!="null")
             {
                 data4 = _unitOfWork.GetRepositoryInstance<Tbl_CartItems>().GetAllRecords().Where(x => x.ProductId==productId && x.Tbl_Cart.Tbl_Members.EmailId==session).ToList().Count();
+                data6 = _unitOfWork.GetRepositoryInstance<Tbl_comment>().GetAllRecords().Where(x => x.ProductId == productId && x.Tbl_Members.EmailId == session && x.Rating!=null).ToList().Count();
             }
             List<Tbl_comment> data5 = _unitOfWork.GetRepositoryInstance<Tbl_comment>().GetAllRecords().Where(x => x.Rating!=null && x.ProductId==productId).ToList();
             if(data5!=null)
@@ -50,6 +53,7 @@ namespace mothercare.Models.Home
                 comments = data3,
                 cartCheck = data4,
                 ratings = data5,
+                already=data6,
                 rating2=rating,
                 rater=counter
             };

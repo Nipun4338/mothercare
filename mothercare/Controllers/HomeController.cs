@@ -291,7 +291,7 @@ namespace mothercare.Controllers
             foreach (Item item in (List<Item>)Session["cart"])
             {
                 Tbl_CartItems cartItems = new Tbl_CartItems();
-                cartItems.CartId = Id;
+                cartItems.CartId = cart.CartId;
                 cartItems.ProductId = item.Product.ProductId;
                 cartItems.Quantity = item.Quantity;
                 db.Tbl_CartItems.Add(cartItems);

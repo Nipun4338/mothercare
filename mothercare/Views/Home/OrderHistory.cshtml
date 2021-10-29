@@ -102,7 +102,7 @@
                                                 </thead>
                                                 <tbody>
                                                     @{
-                                                        foreach (var items in Model.cartItems.ToList().Where(x=>x.CartId==Convert.ToInt32(item.OrderId)))
+                                                        foreach (var items in Model.cartItems.ToList().Where(x=>x.CartId==Convert.ToInt32(item.CartId)))
                                                         {
                                                             int koto = 0;
                                                             koto = Convert.ToInt32(items.Quantity * items.Tbl_Product.Price);
