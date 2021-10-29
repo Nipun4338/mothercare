@@ -26,8 +26,8 @@ instruments. So here is all of them as an online shop.
    
   - User’s Perspective -</br>
     - Can buy maternity products from shop.</br>
-    - Can rate confirmed products. </br>
-    - Can search products by their category and rating. </br>
+    - Can rate confirmed products. Fully functional dynamic rating system. </br>
+    - Can search products by their category or rating. </br>
     - Paypal payment gateway integrated.
 
 ## ERD
