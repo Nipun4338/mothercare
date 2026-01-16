@@ -1,37 +1,37 @@
-# mothercare
-"Mother Care - For your Loved Ones" is offering an emergency health care solution for pregnant women. As we are 
-passing through a pandemic, it’s really difficult sometimes finding emergency products and maternity 
-instruments. So here is all of them as an online shop. 
+# 🤰 Mother Care - Emergency Maternity Health Platform
 
-    The project took almost 13 days to shape like the video provided below.
+"Mother Care - For your Loved Ones" is a dedicated e-commerce solution addressing the critical need for maternity healthcare products during the pandemic. It provides a safe, accessible online marketplace for essential instruments and supplies when they are hardest to find.
 
-## Used
-  Frontend  | Backend
-  ------------- | -------------
-  Html  | C#
-  CSS/SCSS/LESS  | SQL
-  Javascript | 
-  Bootstrap | 
-  JQuery |
-  Ajax | 
-  
-    Framework:  ASP.Net MVC
- 
-## Key Features
-  - Admin’s Perspective -</br>
-    - Add products, categories and slides.</br>
-    - Change the status of orders.</br>
-    - Customize products.</br>
-    - Customize notices.</br></br>
-   
-  - User’s Perspective -</br>
-    - Can buy maternity products from shop.</br>
-    - Can rate confirmed products. Fully functional dynamic rating system. </br>
-    - Can search products by their category or rating. </br>
-    - Paypal payment gateway integrated.
+> _Development Timeline: Delivered in just 13 days._
 
-## ERD
+## 🛠 Tech Stack
+
+| Frontend          | Backend          | Framework       |
+| :---------------- | :--------------- | :-------------- |
+| HTML5, CSS/SCSS   | C#               | **ASP.Net MVC** |
+| Javascript (ES6+) | SQL (SQL Server) |                 |
+| Bootstrap         |                  |                 |
+| jQuery / AJAX     |                  |                 |
+
+## ✨ Key Features
+
+### 🔧 For Admins
+
+- **Inventory Control**: Seamlessly add products, categories, and homepage slides.
+- **Order Management**: Real-time status updates for customer orders.
+- **Customization**: Full control over product listings and site-wide notices.
+
+### 🛍 For Users
+
+- **Specialized Shopping**: Access to a curated list of maternity products.
+- **Dynamic Rating System**: Fully functional, dynamic feedback system for confirmed purchases.
+- **Smart Search**: Filter products by category or quality ratings.
+- **Secure Payments**: Integrated **PayPal** gateway for safe transactions.
+
+## 📊 Database Design (ERD)
+
 ![ERD](EntityDesignerDiagram.png)
 
-## Details
+## 🎥 Project Demo
+
 [![For Details](https://img.youtube.com/vi/uXxFRcwUoa4/hqdefault.jpg)](https://youtu.be/uXxFRcwUoa4)
